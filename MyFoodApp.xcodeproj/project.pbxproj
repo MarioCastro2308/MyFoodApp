@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31304ED02A40B116004700CD /* ComplementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31304ECE2A40B116004700CD /* ComplementCell.swift */; };
+		31304ED12A40B116004700CD /* ComplementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31304ECF2A40B116004700CD /* ComplementCell.xib */; };
+		31304ED32A40B7DD004700CD /* NutritionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31304ED22A40B7DD004700CD /* NutritionDataManager.swift */; };
+		31304ED52A40BC3F004700CD /* NutritionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31304ED42A40BC3F004700CD /* NutritionData.swift */; };
+		31304ED72A40DC9E004700CD /* NutritionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31304ED62A40DC9E004700CD /* NutritionModel.swift */; };
 		3131F54D2A3B8F52006924CA /* CherryBombOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3131F54C2A3B8F52006924CA /* CherryBombOne-Regular.ttf */; };
 		3131F54F2A3B9854006924CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3131F54E2A3B9854006924CA /* GoogleService-Info.plist */; };
 		3131F5522A3B9AC9006924CA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3131F5512A3B9AC9006924CA /* FirebaseAuth */; };
@@ -24,6 +29,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31304ECE2A40B116004700CD /* ComplementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementCell.swift; sourceTree = "<group>"; };
+		31304ECF2A40B116004700CD /* ComplementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComplementCell.xib; sourceTree = "<group>"; };
+		31304ED22A40B7DD004700CD /* NutritionDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionDataManager.swift; sourceTree = "<group>"; };
+		31304ED42A40BC3F004700CD /* NutritionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionData.swift; sourceTree = "<group>"; };
+		31304ED62A40DC9E004700CD /* NutritionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionModel.swift; sourceTree = "<group>"; };
 		3131F54C2A3B8F52006924CA /* CherryBombOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CherryBombOne-Regular.ttf"; sourceTree = "<group>"; };
 		3131F54E2A3B9854006924CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3131F5562A3BA1B1006924CA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +63,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		310AA2D12A3D0C53007D2CD3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				31304ED22A40B7DD004700CD /* NutritionDataManager.swift */,
+				31304ED42A40BC3F004700CD /* NutritionData.swift */,
+				31304ED62A40DC9E004700CD /* NutritionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3131F54B2A3B8F47006924CA /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +91,16 @@
 				3131F55C2A3BBC86006924CA /* HomeViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		3131F55E2A3BD0BA006924CA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				319BBF242A3B8B5A003A1C26 /* Main.storyboard */,
+				31304ECE2A40B116004700CD /* ComplementCell.swift */,
+				31304ECF2A40B116004700CD /* ComplementCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		319BBF122A3B8B5A003A1C26 = {
@@ -95,8 +125,9 @@
 				3131F54B2A3B8F47006924CA /* Fonts */,
 				319BBF1E2A3B8B5A003A1C26 /* AppDelegate.swift */,
 				319BBF202A3B8B5A003A1C26 /* SceneDelegate.swift */,
+				310AA2D12A3D0C53007D2CD3 /* Model */,
+				3131F55E2A3BD0BA006924CA /* View */,
 				3131F5552A3BA05F006924CA /* Controller */,
-				319BBF242A3B8B5A003A1C26 /* Main.storyboard */,
 				319BBF272A3B8B5B003A1C26 /* Assets.xcassets */,
 				319BBF292A3B8B5B003A1C26 /* LaunchScreen.storyboard */,
 				319BBF2C2A3B8B5B003A1C26 /* Info.plist */,
@@ -174,6 +205,7 @@
 				319BBF282A3B8B5B003A1C26 /* Assets.xcassets in Resources */,
 				3131F54F2A3B9854006924CA /* GoogleService-Info.plist in Resources */,
 				319BBF262A3B8B5A003A1C26 /* Main.storyboard in Resources */,
+				31304ED12A40B116004700CD /* ComplementCell.xib in Resources */,
 				3131F54D2A3B8F52006924CA /* CherryBombOne-Regular.ttf in Resources */,
 				3131F55B2A3BA7CA006924CA /* DMSans-Medium.ttf in Resources */,
 			);
@@ -190,8 +222,12 @@
 				319BBF1F2A3B8B5A003A1C26 /* AppDelegate.swift in Sources */,
 				319BBF212A3B8B5A003A1C26 /* SceneDelegate.swift in Sources */,
 				3131F5592A3BA1EA006924CA /* LoginViewController.swift in Sources */,
+				31304ED02A40B116004700CD /* ComplementCell.swift in Sources */,
 				3131F5572A3BA1B1006924CA /* RegisterViewController.swift in Sources */,
+				31304ED72A40DC9E004700CD /* NutritionModel.swift in Sources */,
+				31304ED32A40B7DD004700CD /* NutritionDataManager.swift in Sources */,
 				3131F55D2A3BBC86006924CA /* HomeViewController.swift in Sources */,
+				31304ED52A40BC3F004700CD /* NutritionData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
