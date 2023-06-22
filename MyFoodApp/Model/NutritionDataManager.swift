@@ -14,7 +14,6 @@ struct NutritionDataManager {
     func fetchNutritionData (for complement : String) {
         let replacedComplement = complement.replacingOccurrences(of: " ", with: "%20")
         let completeUrl : String = "\(baseUrl)&ingr=\(replacedComplement)"
-        print(completeUrl)
         performRequest(with: completeUrl)
     }
     

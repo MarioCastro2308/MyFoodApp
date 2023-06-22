@@ -19,7 +19,11 @@
 		3131F5572A3BA1B1006924CA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131F5562A3BA1B1006924CA /* RegisterViewController.swift */; };
 		3131F5592A3BA1EA006924CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131F5582A3BA1EA006924CA /* LoginViewController.swift */; };
 		3131F55B2A3BA7CA006924CA /* DMSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3131F55A2A3BA7CA006924CA /* DMSans-Medium.ttf */; };
-		3131F55D2A3BBC86006924CA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131F55C2A3BBC86006924CA /* HomeViewController.swift */; };
+		3131F55D2A3BBC86006924CA /* ComplementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131F55C2A3BBC86006924CA /* ComplementsViewController.swift */; };
+		313893612A449D7100AE0A16 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 313893602A449D7100AE0A16 /* Realm */; };
+		313893632A449D7100AE0A16 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 313893622A449D7100AE0A16 /* RealmSwift */; };
+		313893652A44CE2700AE0A16 /* MealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313893642A44CE2700AE0A16 /* MealsTableViewController.swift */; };
+		313893672A44CE9900AE0A16 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313893662A44CE9900AE0A16 /* HomeViewController.swift */; };
 		319BBF1F2A3B8B5A003A1C26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319BBF1E2A3B8B5A003A1C26 /* AppDelegate.swift */; };
 		319BBF212A3B8B5A003A1C26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319BBF202A3B8B5A003A1C26 /* SceneDelegate.swift */; };
 		319BBF232A3B8B5A003A1C26 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319BBF222A3B8B5A003A1C26 /* MainViewController.swift */; };
@@ -39,7 +43,9 @@
 		3131F5562A3BA1B1006924CA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		3131F5582A3BA1EA006924CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3131F55A2A3BA7CA006924CA /* DMSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Medium.ttf"; sourceTree = "<group>"; };
-		3131F55C2A3BBC86006924CA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3131F55C2A3BBC86006924CA /* ComplementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementsViewController.swift; sourceTree = "<group>"; };
+		313893642A44CE2700AE0A16 /* MealsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsTableViewController.swift; sourceTree = "<group>"; };
+		313893662A44CE9900AE0A16 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		319BBF1B2A3B8B5A003A1C26 /* MyFoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFoodApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		319BBF1E2A3B8B5A003A1C26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		319BBF202A3B8B5A003A1C26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				313893632A449D7100AE0A16 /* RealmSwift in Frameworks */,
+				313893612A449D7100AE0A16 /* Realm in Frameworks */,
 				3131F5522A3B9AC9006924CA /* FirebaseAuth in Frameworks */,
 				3131F5542A3B9AC9006924CA /* FirebaseFirestore in Frameworks */,
 			);
@@ -88,7 +96,9 @@
 				319BBF222A3B8B5A003A1C26 /* MainViewController.swift */,
 				3131F5562A3BA1B1006924CA /* RegisterViewController.swift */,
 				3131F5582A3BA1EA006924CA /* LoginViewController.swift */,
-				3131F55C2A3BBC86006924CA /* HomeViewController.swift */,
+				3131F55C2A3BBC86006924CA /* ComplementsViewController.swift */,
+				313893642A44CE2700AE0A16 /* MealsTableViewController.swift */,
+				313893662A44CE9900AE0A16 /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -155,6 +165,8 @@
 			packageProductDependencies = (
 				3131F5512A3B9AC9006924CA /* FirebaseAuth */,
 				3131F5532A3B9AC9006924CA /* FirebaseFirestore */,
+				313893602A449D7100AE0A16 /* Realm */,
+				313893622A449D7100AE0A16 /* RealmSwift */,
 			);
 			productName = MyFoodApp;
 			productReference = 319BBF1B2A3B8B5A003A1C26 /* MyFoodApp.app */;
@@ -186,6 +198,7 @@
 			mainGroup = 319BBF122A3B8B5A003A1C26;
 			packageReferences = (
 				3131F5502A3B9AC9006924CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3138935F2A449D7100AE0A16 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 319BBF1C2A3B8B5A003A1C26 /* Products */;
 			projectDirPath = "";
@@ -226,8 +239,10 @@
 				3131F5572A3BA1B1006924CA /* RegisterViewController.swift in Sources */,
 				31304ED72A40DC9E004700CD /* NutritionModel.swift in Sources */,
 				31304ED32A40B7DD004700CD /* NutritionDataManager.swift in Sources */,
-				3131F55D2A3BBC86006924CA /* HomeViewController.swift in Sources */,
+				3131F55D2A3BBC86006924CA /* ComplementsViewController.swift in Sources */,
 				31304ED52A40BC3F004700CD /* NutritionData.swift in Sources */,
+				313893652A44CE2700AE0A16 /* MealsTableViewController.swift in Sources */,
+				313893672A44CE9900AE0A16 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +468,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		3138935F2A449D7100AE0A16 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.40.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -465,6 +488,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3131F5502A3B9AC9006924CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		313893602A449D7100AE0A16 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3138935F2A449D7100AE0A16 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		313893622A449D7100AE0A16 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3138935F2A449D7100AE0A16 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
