@@ -24,6 +24,7 @@
 		313893632A449D7100AE0A16 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 313893622A449D7100AE0A16 /* RealmSwift */; };
 		313893652A44CE2700AE0A16 /* MealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313893642A44CE2700AE0A16 /* MealsTableViewController.swift */; };
 		313893672A44CE9900AE0A16 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313893662A44CE9900AE0A16 /* HomeViewController.swift */; };
+		313893692A44F94C00AE0A16 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313893682A44F94C00AE0A16 /* SideMenuViewController.swift */; };
 		319BBF1F2A3B8B5A003A1C26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319BBF1E2A3B8B5A003A1C26 /* AppDelegate.swift */; };
 		319BBF212A3B8B5A003A1C26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319BBF202A3B8B5A003A1C26 /* SceneDelegate.swift */; };
 		319BBF232A3B8B5A003A1C26 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319BBF222A3B8B5A003A1C26 /* MainViewController.swift */; };
@@ -46,6 +47,7 @@
 		3131F55C2A3BBC86006924CA /* ComplementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementsViewController.swift; sourceTree = "<group>"; };
 		313893642A44CE2700AE0A16 /* MealsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsTableViewController.swift; sourceTree = "<group>"; };
 		313893662A44CE9900AE0A16 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		313893682A44F94C00AE0A16 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		319BBF1B2A3B8B5A003A1C26 /* MyFoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFoodApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		319BBF1E2A3B8B5A003A1C26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		319BBF202A3B8B5A003A1C26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				3131F55C2A3BBC86006924CA /* ComplementsViewController.swift */,
 				313893642A44CE2700AE0A16 /* MealsTableViewController.swift */,
 				313893662A44CE9900AE0A16 /* HomeViewController.swift */,
+				313893682A44F94C00AE0A16 /* SideMenuViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				319BBF232A3B8B5A003A1C26 /* MainViewController.swift in Sources */,
 				319BBF1F2A3B8B5A003A1C26 /* AppDelegate.swift in Sources */,
 				319BBF212A3B8B5A003A1C26 /* SceneDelegate.swift in Sources */,
+				313893692A44F94C00AE0A16 /* SideMenuViewController.swift in Sources */,
 				3131F5592A3BA1EA006924CA /* LoginViewController.swift in Sources */,
 				31304ED02A40B116004700CD /* ComplementCell.swift in Sources */,
 				3131F5572A3BA1B1006924CA /* RegisterViewController.swift in Sources */,
