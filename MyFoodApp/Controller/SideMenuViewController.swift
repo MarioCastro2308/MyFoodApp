@@ -14,9 +14,8 @@ protocol SideMenuViewControllerDelegate {
 class SideMenuViewController: UIViewController {
 
     @IBOutlet weak var sideMenuTableView: UITableView!
-    
     @IBOutlet weak var footerLabel: UILabel!
-    
+    @IBOutlet weak var profileImageView: UIImageView!
     
     var delegate: SideMenuViewControllerDelegate?
     var defaultHighlightedCell: Int = 0
@@ -25,6 +24,8 @@ class SideMenuViewController: UIViewController {
         SideMenuModel(icon: UIImage(systemName: "house.fill")!, title: "Home"),
         SideMenuModel(icon: UIImage(systemName: "person.fill")!, title: "Edit Profile"),
         SideMenuModel(icon: UIImage(systemName: "calendar")!, title: "Today Meals"),
+        SideMenuModel(icon: UIImage(systemName: "calendar")!, title: "Weak Plan"),
+        SideMenuModel(icon: UIImage(systemName: "calendar")!, title: "Log out"),
         
     ]
     
@@ -33,7 +34,10 @@ class SideMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Profile ImageView
+        self.profileImageView.layer.cornerRadius = 50
+        self.profileImageView.clipsToBounds = true
         
         // TableView
         self.sideMenuTableView.delegate = self

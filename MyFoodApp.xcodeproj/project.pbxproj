@@ -35,6 +35,11 @@
 		319EA6A02A69BF51000B99C6 /* SuperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA69F2A69BF51000B99C6 /* SuperViewController.swift */; };
 		319EA6A22A69D898000B99C6 /* TodayMealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6A12A69D898000B99C6 /* TodayMealsViewController.swift */; };
 		319EA6A42A69EAFF000B99C6 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6A32A69EAFF000B99C6 /* UserProfileViewController.swift */; };
+		319EA6A72A6A5256000B99C6 /* MealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6A52A6A5256000B99C6 /* MealCell.swift */; };
+		319EA6A82A6A5256000B99C6 /* MealCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319EA6A62A6A5256000B99C6 /* MealCell.xib */; };
+		319EA6AB2A6A5D32000B99C6 /* ComplementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6A92A6A5D32000B99C6 /* ComplementCell.swift */; };
+		319EA6AC2A6A5D32000B99C6 /* ComplementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319EA6AA2A6A5D32000B99C6 /* ComplementCell.xib */; };
+		319EA6AE2A6A61EA000B99C6 /* MealTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6AD2A6A61EA000B99C6 /* MealTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +69,11 @@
 		319EA69F2A69BF51000B99C6 /* SuperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperViewController.swift; sourceTree = "<group>"; };
 		319EA6A12A69D898000B99C6 /* TodayMealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMealsViewController.swift; sourceTree = "<group>"; };
 		319EA6A32A69EAFF000B99C6 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		319EA6A52A6A5256000B99C6 /* MealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCell.swift; sourceTree = "<group>"; };
+		319EA6A62A6A5256000B99C6 /* MealCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealCell.xib; sourceTree = "<group>"; };
+		319EA6A92A6A5D32000B99C6 /* ComplementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementCell.swift; sourceTree = "<group>"; };
+		319EA6AA2A6A5D32000B99C6 /* ComplementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComplementCell.xib; sourceTree = "<group>"; };
+		319EA6AD2A6A61EA000B99C6 /* MealTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +98,7 @@
 				31304ED42A40BC3F004700CD /* NutritionData.swift */,
 				31304ED62A40DC9E004700CD /* NutritionModel.swift */,
 				319EA6992A69BEAA000B99C6 /* SideMenuModel.swift */,
+				319EA6AD2A6A61EA000B99C6 /* MealTest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -123,6 +134,10 @@
 			children = (
 				319EA69B2A69BED5000B99C6 /* SideMenuCell.swift */,
 				319EA69C2A69BED5000B99C6 /* SideMenuCell.xib */,
+				319EA6A52A6A5256000B99C6 /* MealCell.swift */,
+				319EA6A62A6A5256000B99C6 /* MealCell.xib */,
+				319EA6A92A6A5D32000B99C6 /* ComplementCell.swift */,
+				319EA6AA2A6A5D32000B99C6 /* ComplementCell.xib */,
 			);
 			path = "Custom views";
 			sourceTree = "<group>";
@@ -233,9 +248,11 @@
 				319EA69E2A69BED5000B99C6 /* SideMenuCell.xib in Resources */,
 				319BBF282A3B8B5B003A1C26 /* Assets.xcassets in Resources */,
 				3131F54F2A3B9854006924CA /* GoogleService-Info.plist in Resources */,
+				319EA6A82A6A5256000B99C6 /* MealCell.xib in Resources */,
 				319BBF262A3B8B5A003A1C26 /* Main.storyboard in Resources */,
 				3131F54D2A3B8F52006924CA /* CherryBombOne-Regular.ttf in Resources */,
 				3131F55B2A3BA7CA006924CA /* DMSans-Medium.ttf in Resources */,
+				319EA6AC2A6A5D32000B99C6 /* ComplementCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +267,7 @@
 				319EA69D2A69BED5000B99C6 /* SideMenuCell.swift in Sources */,
 				319BBF1F2A3B8B5A003A1C26 /* AppDelegate.swift in Sources */,
 				319BBF212A3B8B5A003A1C26 /* SceneDelegate.swift in Sources */,
+				319EA6AB2A6A5D32000B99C6 /* ComplementCell.swift in Sources */,
 				313893692A44F94C00AE0A16 /* SideMenuViewController.swift in Sources */,
 				319EA6A42A69EAFF000B99C6 /* UserProfileViewController.swift in Sources */,
 				3131F5592A3BA1EA006924CA /* LoginViewController.swift in Sources */,
@@ -257,7 +275,9 @@
 				319EA6A02A69BF51000B99C6 /* SuperViewController.swift in Sources */,
 				31304ED72A40DC9E004700CD /* NutritionModel.swift in Sources */,
 				31304ED32A40B7DD004700CD /* NutritionDataManager.swift in Sources */,
+				319EA6AE2A6A61EA000B99C6 /* MealTest.swift in Sources */,
 				3131F55D2A3BBC86006924CA /* ComplementsViewController.swift in Sources */,
+				319EA6A72A6A5256000B99C6 /* MealCell.swift in Sources */,
 				319EA6A22A69D898000B99C6 /* TodayMealsViewController.swift in Sources */,
 				31304ED52A40BC3F004700CD /* NutritionData.swift in Sources */,
 				313893652A44CE2700AE0A16 /* MealsTableViewController.swift in Sources */,
