@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31304ED02A40B116004700CD /* ComplementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31304ECE2A40B116004700CD /* ComplementCell.swift */; };
-		31304ED12A40B116004700CD /* ComplementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31304ECF2A40B116004700CD /* ComplementCell.xib */; };
 		31304ED32A40B7DD004700CD /* NutritionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31304ED22A40B7DD004700CD /* NutritionDataManager.swift */; };
 		31304ED52A40BC3F004700CD /* NutritionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31304ED42A40BC3F004700CD /* NutritionData.swift */; };
 		31304ED72A40DC9E004700CD /* NutritionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31304ED62A40DC9E004700CD /* NutritionModel.swift */; };
@@ -31,11 +29,15 @@
 		319BBF262A3B8B5A003A1C26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 319BBF242A3B8B5A003A1C26 /* Main.storyboard */; };
 		319BBF282A3B8B5B003A1C26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 319BBF272A3B8B5B003A1C26 /* Assets.xcassets */; };
 		319BBF2B2A3B8B5B003A1C26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 319BBF292A3B8B5B003A1C26 /* LaunchScreen.storyboard */; };
+		319EA69A2A69BEAA000B99C6 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6992A69BEAA000B99C6 /* SideMenuModel.swift */; };
+		319EA69D2A69BED5000B99C6 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA69B2A69BED5000B99C6 /* SideMenuCell.swift */; };
+		319EA69E2A69BED5000B99C6 /* SideMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319EA69C2A69BED5000B99C6 /* SideMenuCell.xib */; };
+		319EA6A02A69BF51000B99C6 /* SuperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA69F2A69BF51000B99C6 /* SuperViewController.swift */; };
+		319EA6A22A69D898000B99C6 /* TodayMealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6A12A69D898000B99C6 /* TodayMealsViewController.swift */; };
+		319EA6A42A69EAFF000B99C6 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6A32A69EAFF000B99C6 /* UserProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		31304ECE2A40B116004700CD /* ComplementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementCell.swift; sourceTree = "<group>"; };
-		31304ECF2A40B116004700CD /* ComplementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComplementCell.xib; sourceTree = "<group>"; };
 		31304ED22A40B7DD004700CD /* NutritionDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionDataManager.swift; sourceTree = "<group>"; };
 		31304ED42A40BC3F004700CD /* NutritionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionData.swift; sourceTree = "<group>"; };
 		31304ED62A40DC9E004700CD /* NutritionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionModel.swift; sourceTree = "<group>"; };
@@ -56,6 +58,12 @@
 		319BBF272A3B8B5B003A1C26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		319BBF2A2A3B8B5B003A1C26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		319BBF2C2A3B8B5B003A1C26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		319EA6992A69BEAA000B99C6 /* SideMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
+		319EA69B2A69BED5000B99C6 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
+		319EA69C2A69BED5000B99C6 /* SideMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuCell.xib; sourceTree = "<group>"; };
+		319EA69F2A69BF51000B99C6 /* SuperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperViewController.swift; sourceTree = "<group>"; };
+		319EA6A12A69D898000B99C6 /* TodayMealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMealsViewController.swift; sourceTree = "<group>"; };
+		319EA6A32A69EAFF000B99C6 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,7 @@
 				31304ED22A40B7DD004700CD /* NutritionDataManager.swift */,
 				31304ED42A40BC3F004700CD /* NutritionData.swift */,
 				31304ED62A40DC9E004700CD /* NutritionModel.swift */,
+				319EA6992A69BEAA000B99C6 /* SideMenuModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -102,18 +111,20 @@
 				313893642A44CE2700AE0A16 /* MealsTableViewController.swift */,
 				313893662A44CE9900AE0A16 /* HomeViewController.swift */,
 				313893682A44F94C00AE0A16 /* SideMenuViewController.swift */,
+				319EA69F2A69BF51000B99C6 /* SuperViewController.swift */,
+				319EA6A12A69D898000B99C6 /* TodayMealsViewController.swift */,
+				319EA6A32A69EAFF000B99C6 /* UserProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		3131F55E2A3BD0BA006924CA /* View */ = {
+		3131F55E2A3BD0BA006924CA /* Custom views */ = {
 			isa = PBXGroup;
 			children = (
-				319BBF242A3B8B5A003A1C26 /* Main.storyboard */,
-				31304ECE2A40B116004700CD /* ComplementCell.swift */,
-				31304ECF2A40B116004700CD /* ComplementCell.xib */,
+				319EA69B2A69BED5000B99C6 /* SideMenuCell.swift */,
+				319EA69C2A69BED5000B99C6 /* SideMenuCell.xib */,
 			);
-			path = View;
+			path = "Custom views";
 			sourceTree = "<group>";
 		};
 		319BBF122A3B8B5A003A1C26 = {
@@ -139,8 +150,9 @@
 				319BBF1E2A3B8B5A003A1C26 /* AppDelegate.swift */,
 				319BBF202A3B8B5A003A1C26 /* SceneDelegate.swift */,
 				310AA2D12A3D0C53007D2CD3 /* Model */,
-				3131F55E2A3BD0BA006924CA /* View */,
+				3131F55E2A3BD0BA006924CA /* Custom views */,
 				3131F5552A3BA05F006924CA /* Controller */,
+				319BBF242A3B8B5A003A1C26 /* Main.storyboard */,
 				319BBF272A3B8B5B003A1C26 /* Assets.xcassets */,
 				319BBF292A3B8B5B003A1C26 /* LaunchScreen.storyboard */,
 				319BBF2C2A3B8B5B003A1C26 /* Info.plist */,
@@ -218,10 +230,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				319BBF2B2A3B8B5B003A1C26 /* LaunchScreen.storyboard in Resources */,
+				319EA69E2A69BED5000B99C6 /* SideMenuCell.xib in Resources */,
 				319BBF282A3B8B5B003A1C26 /* Assets.xcassets in Resources */,
 				3131F54F2A3B9854006924CA /* GoogleService-Info.plist in Resources */,
 				319BBF262A3B8B5A003A1C26 /* Main.storyboard in Resources */,
-				31304ED12A40B116004700CD /* ComplementCell.xib in Resources */,
 				3131F54D2A3B8F52006924CA /* CherryBombOne-Regular.ttf in Resources */,
 				3131F55B2A3BA7CA006924CA /* DMSans-Medium.ttf in Resources */,
 			);
@@ -235,18 +247,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				319BBF232A3B8B5A003A1C26 /* MainViewController.swift in Sources */,
+				319EA69D2A69BED5000B99C6 /* SideMenuCell.swift in Sources */,
 				319BBF1F2A3B8B5A003A1C26 /* AppDelegate.swift in Sources */,
 				319BBF212A3B8B5A003A1C26 /* SceneDelegate.swift in Sources */,
 				313893692A44F94C00AE0A16 /* SideMenuViewController.swift in Sources */,
+				319EA6A42A69EAFF000B99C6 /* UserProfileViewController.swift in Sources */,
 				3131F5592A3BA1EA006924CA /* LoginViewController.swift in Sources */,
-				31304ED02A40B116004700CD /* ComplementCell.swift in Sources */,
 				3131F5572A3BA1B1006924CA /* RegisterViewController.swift in Sources */,
+				319EA6A02A69BF51000B99C6 /* SuperViewController.swift in Sources */,
 				31304ED72A40DC9E004700CD /* NutritionModel.swift in Sources */,
 				31304ED32A40B7DD004700CD /* NutritionDataManager.swift in Sources */,
 				3131F55D2A3BBC86006924CA /* ComplementsViewController.swift in Sources */,
+				319EA6A22A69D898000B99C6 /* TodayMealsViewController.swift in Sources */,
 				31304ED52A40BC3F004700CD /* NutritionData.swift in Sources */,
 				313893652A44CE2700AE0A16 /* MealsTableViewController.swift in Sources */,
 				313893672A44CE9900AE0A16 /* HomeViewController.swift in Sources */,
+				319EA69A2A69BEAA000B99C6 /* SideMenuModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
