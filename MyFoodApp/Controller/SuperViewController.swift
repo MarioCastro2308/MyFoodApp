@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SuperViewController: UIViewController {
 
@@ -26,7 +27,7 @@ class SuperViewController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = #colorLiteral(red: 0.737254902, green: 0.1294117647, blue: 0.2941176471, alpha: 1)
+        self.view.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
         
         // Shadow Background View
         self.sideMenuShadowView = UIView(frame: self.view.bounds)
@@ -105,13 +106,24 @@ extension SuperViewController: SideMenuViewControllerDelegate {
         case 3:
             // Movies
             self.showViewController(viewController: UserProfileViewController.self, storyboardId: "profileNavID")
-            
+        case 4:
+            logout()
         default:
             break
         }
         
         // Collapse side menu with animation
         DispatchQueue.main.async { self.sideMenuState(expanded: false) }
+    }
+    
+    func logout(){
+        let firebaseAuth = Auth.auth()
+    do {
+      try firebaseAuth.signOut()
+        navigationController?.popToRootViewController(animated: true)
+    } catch let signOutError as NSError {
+      print("Error signing out: %@", signOutError)
+    }
     }
     
     func showViewController<T: UIViewController>(viewController: T.Type, storyboardId: String) -> () {

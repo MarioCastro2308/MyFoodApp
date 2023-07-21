@@ -10,6 +10,7 @@ import UIKit
 class UserProfileViewController: UIViewController, UIPickerViewDelegate,UIPickerViewDataSource {
 
     
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var txtFieldGender: UITextField!
     
     let pickerView = UIPickerView()
@@ -18,9 +19,17 @@ class UserProfileViewController: UIViewController, UIPickerViewDelegate,UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Profile ImageView
+        profileImageView.layer.cornerRadius = 50
+        profileImageView.clipsToBounds = true
+        profileImageView.layer.borderColor = UIColor.black.cgColor
+        profileImageView.layer.borderWidth = 2
+        
+        // Picker view
         pickerView.delegate = self
         pickerView.dataSource = self
         txtFieldGender.inputView = pickerView
+        
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

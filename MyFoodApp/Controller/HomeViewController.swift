@@ -20,14 +20,17 @@ class HomeViewController: UIViewController {
         sideMenuBtn.target = revealViewController()
         sideMenuBtn.action = #selector(revealViewController()?.revealSideMenu)
         
-//        caloriesView.layer.cornerRadius = 15
-//        caloriesView.clipsToBounds = true
+        caloriesView.layer.cornerRadius = 15
+        caloriesView.clipsToBounds = true
+        
+        caloriesView.layer.borderColor = UIColor.black.cgColor
+        caloriesView.layer.borderWidth = 1
 //        
-        caloriesView.layer.shadowColor = UIColor.black.cgColor
-        caloriesView.layer.shadowOpacity = 0.2
-        caloriesView.layer.shadowOffset = CGSize(width: 4, height: 4)
-        caloriesView.layer.shadowRadius = 5.0
-        caloriesView.layer.masksToBounds = false
+//        caloriesView.layer.shadowColor = UIColor.black.cgColor
+//        caloriesView.layer.shadowOpacity = 0.2
+//        caloriesView.layer.shadowOffset = CGSize(width: 4, height: 4)
+//        caloriesView.layer.shadowRadius = 5.0
+//        caloriesView.layer.masksToBounds = false
         
         
         macrosView.layer.cornerRadius = 15

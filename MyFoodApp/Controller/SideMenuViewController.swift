@@ -25,7 +25,7 @@ class SideMenuViewController: UIViewController {
         SideMenuModel(icon: UIImage(systemName: "person.fill")!, title: "Edit Profile"),
         SideMenuModel(icon: UIImage(systemName: "calendar")!, title: "Today Meals"),
         SideMenuModel(icon: UIImage(systemName: "calendar")!, title: "Weak Plan"),
-        SideMenuModel(icon: UIImage(systemName: "calendar")!, title: "Log out"),
+        SideMenuModel(icon: UIImage(systemName: "xmark")!, title: "Log out"),
         
     ]
     

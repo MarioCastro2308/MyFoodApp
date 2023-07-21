@@ -40,6 +40,8 @@
 		319EA6AB2A6A5D32000B99C6 /* ComplementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6A92A6A5D32000B99C6 /* ComplementCell.swift */; };
 		319EA6AC2A6A5D32000B99C6 /* ComplementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319EA6AA2A6A5D32000B99C6 /* ComplementCell.xib */; };
 		319EA6AE2A6A61EA000B99C6 /* MealTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6AD2A6A61EA000B99C6 /* MealTest.swift */; };
+		31AB59582A6AD58E00DABF97 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31AB59562A6AD58E00DABF97 /* DataModel.xcdatamodeld */; };
+		31AB595A2A6ADCEA00DABF97 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AB59592A6ADCEA00DABF97 /* MealViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		319EA6A92A6A5D32000B99C6 /* ComplementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementCell.swift; sourceTree = "<group>"; };
 		319EA6AA2A6A5D32000B99C6 /* ComplementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComplementCell.xib; sourceTree = "<group>"; };
 		319EA6AD2A6A61EA000B99C6 /* MealTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTest.swift; sourceTree = "<group>"; };
+		31AB59572A6AD58E00DABF97 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		31AB59592A6ADCEA00DABF97 /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 				31304ED62A40DC9E004700CD /* NutritionModel.swift */,
 				319EA6992A69BEAA000B99C6 /* SideMenuModel.swift */,
 				319EA6AD2A6A61EA000B99C6 /* MealTest.swift */,
+				31AB59562A6AD58E00DABF97 /* DataModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 				319EA69F2A69BF51000B99C6 /* SuperViewController.swift */,
 				319EA6A12A69D898000B99C6 /* TodayMealsViewController.swift */,
 				319EA6A32A69EAFF000B99C6 /* UserProfileViewController.swift */,
+				31AB59592A6ADCEA00DABF97 /* MealViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -266,11 +272,13 @@
 				319BBF232A3B8B5A003A1C26 /* MainViewController.swift in Sources */,
 				319EA69D2A69BED5000B99C6 /* SideMenuCell.swift in Sources */,
 				319BBF1F2A3B8B5A003A1C26 /* AppDelegate.swift in Sources */,
+				31AB59582A6AD58E00DABF97 /* DataModel.xcdatamodeld in Sources */,
 				319BBF212A3B8B5A003A1C26 /* SceneDelegate.swift in Sources */,
 				319EA6AB2A6A5D32000B99C6 /* ComplementCell.swift in Sources */,
 				313893692A44F94C00AE0A16 /* SideMenuViewController.swift in Sources */,
 				319EA6A42A69EAFF000B99C6 /* UserProfileViewController.swift in Sources */,
 				3131F5592A3BA1EA006924CA /* LoginViewController.swift in Sources */,
+				31AB595A2A6ADCEA00DABF97 /* MealViewController.swift in Sources */,
 				3131F5572A3BA1B1006924CA /* RegisterViewController.swift in Sources */,
 				319EA6A02A69BF51000B99C6 /* SuperViewController.swift in Sources */,
 				31304ED72A40DC9E004700CD /* NutritionModel.swift in Sources */,
@@ -540,6 +548,19 @@
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		31AB59562A6AD58E00DABF97 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				31AB59572A6AD58E00DABF97 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 31AB59572A6AD58E00DABF97 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 319BBF132A3B8B5A003A1C26 /* Project object */;
 }
