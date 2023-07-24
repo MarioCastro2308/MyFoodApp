@@ -9,8 +9,10 @@ import UIKit
 
 class ComplementCell: UITableViewCell {
 
-    @IBOutlet weak var complementTitleLbl: UILabel!
     
+    
+    @IBOutlet weak var lblQuantity: UILabel!
+    @IBOutlet weak var lblName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

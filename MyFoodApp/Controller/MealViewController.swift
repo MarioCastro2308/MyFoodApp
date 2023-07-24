@@ -6,14 +6,26 @@
 //
 
 import UIKit
+import CoreData
 
 class MealViewController: UIViewController {
-
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var complementsArray = [Complements]()
+    
     @IBOutlet weak var dateTxtField: UITextField!
+    @IBOutlet weak var complementsTableView: UITableView!
+    
     let datePicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Delegates
+        complementsTableView.delegate = self
+        complementsTableView.dataSource = self
+        
+        complementsTableView.register(UINib(nibName: "ComplementCell", bundle: nil), forCellReuseIdentifier: "ComplementCell")
+        
         createDatePicker()
     }
     
@@ -42,3 +54,27 @@ class MealViewController: UIViewController {
         view.endEditing(true)
     }
 }
+
+//MARK: - UITableViewDelegate Methods
+extension MealViewController : UITableViewDelegate {
+    
+}
+
+//MARK: - UITableViewDataSource Methods
+extension MealViewController : UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ComplementCell", for: indexPath) as! ComplementCell
+        cell.lblName.text = "Hello"
+        cell.lblQuantity.text = "100 gr"
+        
+        return cell
+    }
+    
+    
+}
+

@@ -52,7 +52,7 @@ extension MealCell : UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ComplementCell", for: indexPath) as! ComplementCell
-        cell.complementTitleLbl.text = complements![indexPath.row]
+        cell.lblName.text = complements![indexPath.row]
         cell.layoutIfNeeded()
         return cell
     }

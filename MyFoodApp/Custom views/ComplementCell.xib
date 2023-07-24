@@ -22,31 +22,24 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eyp-dV-ykb">
-                        <rect key="frame" x="255" y="11.666666666666664" width="29" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="gr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sH4-BM-EhD">
-                        <rect key="frame" x="294" y="11.666666666666664" width="16" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 gr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eyp-dV-ykb">
+                        <rect key="frame" x="261.66666666666669" y="11.666666666666664" width="48.333333333333314" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="sH4-BM-EhD" secondAttribute="trailing" constant="10" id="JcE-zq-CJe"/>
-                    <constraint firstItem="sH4-BM-EhD" firstAttribute="leading" secondItem="Eyp-dV-ykb" secondAttribute="trailing" constant="10" id="Zvp-K2-QAi"/>
                     <constraint firstItem="mKE-ab-IXi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="aBU-CQ-Zen"/>
                     <constraint firstItem="Eyp-dV-ykb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bnj-mT-3IY"/>
-                    <constraint firstItem="sH4-BM-EhD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="f8b-QB-NaR"/>
+                    <constraint firstAttribute="trailing" secondItem="Eyp-dV-ykb" secondAttribute="trailing" constant="10" id="cRs-1Q-H3o"/>
                     <constraint firstItem="mKE-ab-IXi" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ixU-CT-W8M"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="complementTitleLbl" destination="mKE-ab-IXi" id="PEt-Et-Ycd"/>
+                <outlet property="lblName" destination="mKE-ab-IXi" id="OeP-Ff-K7W"/>
+                <outlet property="lblQuantity" destination="Eyp-dV-ykb" id="gjY-4H-wFD"/>
             </connections>
             <point key="canvasLocation" x="129.7709923664122" y="-11.267605633802818"/>
         </tableViewCell>

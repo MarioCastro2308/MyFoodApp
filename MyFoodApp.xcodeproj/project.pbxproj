@@ -17,7 +17,6 @@
 		3131F5572A3BA1B1006924CA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131F5562A3BA1B1006924CA /* RegisterViewController.swift */; };
 		3131F5592A3BA1EA006924CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131F5582A3BA1EA006924CA /* LoginViewController.swift */; };
 		3131F55B2A3BA7CA006924CA /* DMSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3131F55A2A3BA7CA006924CA /* DMSans-Medium.ttf */; };
-		3131F55D2A3BBC86006924CA /* ComplementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131F55C2A3BBC86006924CA /* ComplementsViewController.swift */; };
 		313893612A449D7100AE0A16 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 313893602A449D7100AE0A16 /* Realm */; };
 		313893632A449D7100AE0A16 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 313893622A449D7100AE0A16 /* RealmSwift */; };
 		313893652A44CE2700AE0A16 /* MealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313893642A44CE2700AE0A16 /* MealsTableViewController.swift */; };
@@ -42,6 +41,8 @@
 		319EA6AE2A6A61EA000B99C6 /* MealTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6AD2A6A61EA000B99C6 /* MealTest.swift */; };
 		31AB59582A6AD58E00DABF97 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31AB59562A6AD58E00DABF97 /* DataModel.xcdatamodeld */; };
 		31AB595A2A6ADCEA00DABF97 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AB59592A6ADCEA00DABF97 /* MealViewController.swift */; };
+		31E1448A2A6EDB2500CC46A2 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E144892A6EDB2500CC46A2 /* SaveButton.swift */; };
+		31E1448C2A6EE5A100CC46A2 /* ComplementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1448B2A6EE5A100CC46A2 /* ComplementsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +54,6 @@
 		3131F5562A3BA1B1006924CA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		3131F5582A3BA1EA006924CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3131F55A2A3BA7CA006924CA /* DMSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Medium.ttf"; sourceTree = "<group>"; };
-		3131F55C2A3BBC86006924CA /* ComplementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementsViewController.swift; sourceTree = "<group>"; };
 		313893642A44CE2700AE0A16 /* MealsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsTableViewController.swift; sourceTree = "<group>"; };
 		313893662A44CE9900AE0A16 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		313893682A44F94C00AE0A16 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +78,8 @@
 		319EA6AD2A6A61EA000B99C6 /* MealTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTest.swift; sourceTree = "<group>"; };
 		31AB59572A6AD58E00DABF97 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		31AB59592A6ADCEA00DABF97 /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
+		31E144892A6EDB2500CC46A2 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
+		31E1448B2A6EE5A100CC46A2 /* ComplementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +125,6 @@
 				319BBF222A3B8B5A003A1C26 /* MainViewController.swift */,
 				3131F5562A3BA1B1006924CA /* RegisterViewController.swift */,
 				3131F5582A3BA1EA006924CA /* LoginViewController.swift */,
-				3131F55C2A3BBC86006924CA /* ComplementsViewController.swift */,
 				313893642A44CE2700AE0A16 /* MealsTableViewController.swift */,
 				313893662A44CE9900AE0A16 /* HomeViewController.swift */,
 				313893682A44F94C00AE0A16 /* SideMenuViewController.swift */,
@@ -131,6 +132,7 @@
 				319EA6A12A69D898000B99C6 /* TodayMealsViewController.swift */,
 				319EA6A32A69EAFF000B99C6 /* UserProfileViewController.swift */,
 				31AB59592A6ADCEA00DABF97 /* MealViewController.swift */,
+				31E1448B2A6EE5A100CC46A2 /* ComplementsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -144,6 +146,7 @@
 				319EA6A62A6A5256000B99C6 /* MealCell.xib */,
 				319EA6A92A6A5D32000B99C6 /* ComplementCell.swift */,
 				319EA6AA2A6A5D32000B99C6 /* ComplementCell.xib */,
+				31E144892A6EDB2500CC46A2 /* SaveButton.swift */,
 			);
 			path = "Custom views";
 			sourceTree = "<group>";
@@ -280,11 +283,12 @@
 				3131F5592A3BA1EA006924CA /* LoginViewController.swift in Sources */,
 				31AB595A2A6ADCEA00DABF97 /* MealViewController.swift in Sources */,
 				3131F5572A3BA1B1006924CA /* RegisterViewController.swift in Sources */,
+				31E1448A2A6EDB2500CC46A2 /* SaveButton.swift in Sources */,
 				319EA6A02A69BF51000B99C6 /* SuperViewController.swift in Sources */,
+				31E1448C2A6EE5A100CC46A2 /* ComplementsViewController.swift in Sources */,
 				31304ED72A40DC9E004700CD /* NutritionModel.swift in Sources */,
 				31304ED32A40B7DD004700CD /* NutritionDataManager.swift in Sources */,
 				319EA6AE2A6A61EA000B99C6 /* MealTest.swift in Sources */,
-				3131F55D2A3BBC86006924CA /* ComplementsViewController.swift in Sources */,
 				319EA6A72A6A5256000B99C6 /* MealCell.swift in Sources */,
 				319EA6A22A69D898000B99C6 /* TodayMealsViewController.swift in Sources */,
 				31304ED52A40BC3F004700CD /* NutritionData.swift in Sources */,
