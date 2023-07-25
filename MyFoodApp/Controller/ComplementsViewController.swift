@@ -7,12 +7,17 @@
 
 import UIKit
 import CoreData
-class ComplementsViewController: UIViewController {
 
+protocol ComplementsViewControllerDelegate {
     
+    func sendDataToMealViewController(complementsList  : [Complements])
+}
+
+class ComplementsViewController: UIViewController {
     
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var txtFieldSearch: UITextField!
+    @IBOutlet weak var btnAddComplement: UIButton!
     
     @IBOutlet weak var lblComplementName: UILabel!
     @IBOutlet weak var lblQuantity: UILabel!
@@ -21,9 +26,16 @@ class ComplementsViewController: UIViewController {
     @IBOutlet weak var lblFats: UILabel!
     
     var nutritionDataManager : NutritionDataManager = NutritionDataManager()
+    var delegate : ComplementsViewControllerDelegate? = nil
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var selectedComplements = [Complements]()
+    var selectedComplementData : NutritionModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+
         nutritionDataManager.delegate = self
         txtFieldSearch.delegate = self
 
@@ -33,16 +45,58 @@ class ComplementsViewController: UIViewController {
         resultView.layer.borderColor = UIColor.black.cgColor
         resultView.layer.borderWidth = 1
         resultView.isHidden = true
+        btnAddComplement.isHidden = true
+        
     }
     
-    
+    // This method is called when the user pressed the search button
     @IBAction func btnSearchAction(_ sender: UIButton) {
         txtFieldSearch.endEditing(true)
     }
+    
+    
+   
+    @IBAction func btnAddComponentAction(_ sender: UIButton) {
+        let newComplement = Complements(context: context)
+        
+        if(selectedComplementData==nil){
+            return
+        } else {
+            newComplement.name = selectedComplementData?.foodMatch
+            newComplement.quantity = Int64(selectedComplementData!.quantity)
+            newComplement.measure = selectedComplementData?.measure
+            newComplement.kcal = selectedComplementData!.kcal
+            newComplement.proteins = selectedComplementData!.proteins
+            newComplement.carbs = selectedComplementData!.carbs
+            newComplement.fats = selectedComplementData!.fats
+           
+        }
+        
+        selectedComplements.append(newComplement)
+        resultView.isHidden = true
+        btnAddComplement.isHidden = true
+        
+//        selectedComplementData = nil
+
+//        saveComplement()
+    }
+    
+    
+    @IBAction func btnSaveComponentsAction(_ sender: UIButton) {
+        
+        if(delegate != nil && selectedComplementData != nil){
+            delegate?.sendDataToMealViewController(complementsList: selectedComplements)
+            self.navigationController?.popViewController(animated: true)
+
+        }
+    }
+    
+    
 }
 
 
 //MARK: - UITextFieldDelegate Methods
+
 extension ComplementsViewController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         txtFieldSearch.endEditing(true)
@@ -57,29 +111,43 @@ extension ComplementsViewController : UITextFieldDelegate{
         // si el usuario a escrito algo
         if let complement : String = txtFieldSearch.text {
             nutritionDataManager.fetchNutritionData(for: complement)
+            
         }
         
         txtFieldSearch.placeholder = "Search"
         txtFieldSearch.text = ""
-        resultView.isHidden = false
     }
 }
 
 //MARK: - NutritionManagerDelegate Methods
 extension ComplementsViewController : NutritionDataManagerDelegate{
+    
     func didUpdateComplementData(_ nutritionDataManager: NutritionDataManager, complementData: NutritionModel) {
         DispatchQueue.main.async {
             self.lblComplementName.text = "\(complementData.foodMatch)"
             self.lblQuantity.text = "\(complementData.quantity) \(complementData.measure)"
-            self.lblProteins.text = "\(complementData.proteins)"
-            self.lblCarbs.text = "\(complementData.carbs)"
-            self.lblFats.text = "\(complementData.fats)"
+            self.lblProteins.text = String(format: "%.2f", complementData.proteins)
+            self.lblCarbs.text = String(format: "%.2f",complementData.carbs)
+            self.lblFats.text = String(format: "%.2f",complementData.fats)
+            self.selectedComplementData = complementData
+            self.resultView.isHidden = false
+            self.btnAddComplement.isHidden = false
         }
     }
     
     func didFailWithError(error: Error) {
         print(error)
     }
+}
+
+//MARK: - DataManipulation Methods
+extension ComplementsViewController {
     
-    
+//    func saveComplement(){
+//        do{
+//            try context.save()
+//        } catch{
+//            print(error)
+//        }
+//    }
 }
