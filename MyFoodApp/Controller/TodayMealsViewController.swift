@@ -6,66 +6,167 @@
 //
 
 import UIKit
+import CoreData
 
-class TodayMealsViewController: UITableViewController {
+class TodayMealsViewController: UIViewController {
     
-    var mealsArray : [MealTest] = [
-        MealTest(title: "BreakFast", complements: ["Chicken", "Rice", "Potatos"]),
-        MealTest(title: "First Meal", complements: ["Chicken", "Pasta", "Avocado", "Fruit", "Avena", "Milk"]),
-        MealTest(title: "Dinner", complements: ["Yogurth"]),
-    ]
+    @IBOutlet weak var btnSideMenu: UIBarButtonItem!
+    @IBOutlet weak var mealsTableView: UITableView!
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+    var mealsArray = [Meal]()
+    var complementsArray = [Complement]()
+    var mealsData = [MealDataModel]()
     
-    @IBOutlet weak var sideMenuBtn: UIBarButtonItem!
+    var selectedDay : String? {
+        didSet {
+            loadMeals(for: selectedDay!)
+            self.title = selectedDay
+            
+        }
+    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Delegates
+        mealsTableView.dataSource = self
+        mealsTableView.delegate = self
+        // Side Menu Button
+        btnSideMenu.target = revealViewController()
+        btnSideMenu.action = #selector(revealViewController()?.revealSideMenu)
+        // Register custom cell
+        mealsTableView.register(UINib(nibName: "ComplementCell", bundle: nil), forCellReuseIdentifier: "ComplementCell")
         
-        sideMenuBtn.target = revealViewController()
-        sideMenuBtn.action = #selector(revealViewController()?.revealSideMenu)
-        tableView.tag = 100
-        tableView.register(UINib(nibName: "MealCell", bundle: nil), forCellReuseIdentifier: "MealCell")
+        if(selectedDay == nil ){
+            getCurrentDayMeals()
+        }
+    }
+    
+    func getCurrentDayMeals(){
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        selectedDay = dateFormatter.string(from: date)
+    }
+    
+    func getComplements(){
+        for meal in mealsArray{
+            loadComplements(mealTitle: meal.title!)
+            mealsData.append(MealDataModel(mealTitle: meal.title!, mealComplements: complementsArray))
+        }
+        
+        print("Number of meals: \(mealsData.count)")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToMealDetails" {
+            let mealVC: MealViewController = segue.destination as! MealViewController
+            mealVC.selectedDay = selectedDay
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        mealsTableView.reloadData()
     }
     
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-
-//    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 80
-//    }
-    
-    //    override func numberOfSections(in tableView: UITableView) -> Int {
-    //        return mealsArray.count
-    //    }
-    //
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mealsArray.count
-        
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MealCell", for: indexPath) as! MealCell
-        cell.mealTitleLabel.text = mealsArray[indexPath.row].title
-        cell.complements = mealsArray[indexPath.row].complements
-        cell.layoutIfNeeded()
-        return cell
-        
-    }
 }
 
-extension UITableView {
-    open override var intrinsicContentSize: CGSize {
-            self.layoutIfNeeded()
-            return self.contentSize
+//MARK: - UITableViewControllerDelegate Methods
+
+extension TodayMealsViewController : UITableViewDelegate {
+    
+}
+
+
+//MARK: - UITableViewControllerDataSource Methods
+
+extension TodayMealsViewController : UITableViewDataSource {
+        
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if(mealsData.count > 0){
+            return mealsData.count
+        } else {
+            return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(mealsData.count > 0){
+//            loadComplements(mealTitle: mealsArray[section].title!)
+//            mealsData.append(MealDataModel(mealTitle: mealsArray[section].title!, mealComplements: complementsArray))
+//            print("Meal: \(mealsData)")
+//            return complementsArray.count
+            return mealsData[section].mealComplements.count + 1
+            
+        } else {
+            return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ComplementCell", for: indexPath) as! ComplementCell
+        
+        // si hay alguna comida establecida para el dia de hoy
+        if(mealsData.count > 0){
+            // si se trata de a primera celda (section title)
+            if(indexPath.row == 0) {
+                
+                let mealTitle = mealsData[indexPath.section].mealTitle
+                cell.lblName.text = mealTitle
+                cell.lblQuantity.text = ""
+            } else {
+                let complement = mealsData[indexPath.section].mealComplements[indexPath.row - 1]
+                cell.lblName.text = complement.name
+                cell.lblQuantity.text = "\(complement.quantity)"
+            }
+            
+        } else {
+            cell.lblName.text = "No meal added yet"
+            cell.lblQuantity.text = ""
         }
         
-    open override var contentSize: CGSize {
-            didSet{
-                self.invalidateIntrinsicContentSize()
-            }
+        return cell
+    }
+    
+    
+}
+
+//MARK: - ManipulationData Methods
+
+extension TodayMealsViewController {
+
+    func loadComplements(mealTitle : String){
+        let request : NSFetchRequest<Complement> = Complement.fetchRequest()
+        let complementPredicate = NSPredicate(format: "parentMeal.title MATCHES %@", mealTitle)
+        
+//        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+//        request.sortDescriptors = [sortDescriptor]
+        request.predicate = complementPredicate
+        do{
+            complementsArray = try context.fetch(request)
+        } catch {
+          print("Error loading complements \(error)")
         }
+    }
+
+    func loadMeals(for selectedDay : String){
+        
+        let request : NSFetchRequest<Meal> = Meal.fetchRequest()
+        let mealPredicate = NSPredicate(format: "day MATCHES %@", selectedDay)
+
+        request.predicate = mealPredicate
+
+        do{
+            mealsArray = try context.fetch(request)
+            getComplements()
+        } catch {
+            print("Error loading meals \(error)")
+        }
+    }
+
 }
 

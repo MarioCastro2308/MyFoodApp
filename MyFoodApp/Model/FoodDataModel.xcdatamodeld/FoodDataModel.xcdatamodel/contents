@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Complement" representedClassName=".Complement" syncable="YES" codeGenerationType="class">
+        <attribute name="carbs" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="fats" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="kcal" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="measure" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="proteins" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="parentMeal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meal" inverseName="complements" inverseEntity="Meal"/>
+    </entity>
+    <entity name="Meal" representedClassName=".Meal" syncable="YES" codeGenerationType="class">
+        <attribute name="day" attributeType="String"/>
+        <attribute name="hour" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="complements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Complement" inverseName="parentMeal" inverseEntity="Complement"/>
+    </entity>
+</model>

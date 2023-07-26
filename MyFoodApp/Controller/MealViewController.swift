@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+
 class MealViewController: UIViewController {
     
     
@@ -16,8 +17,9 @@ class MealViewController: UIViewController {
     @IBOutlet weak var complementsTableView: UITableView!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var complementsArray = [Complements]()
-    let datePicker = UIDatePicker()
+    var complementsArray = [Complement]()
+    let timeDatePicker = UIDatePicker()
+    var selectedDay : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +28,6 @@ class MealViewController: UIViewController {
         complementsTableView.dataSource = self
         complementsTableView.register(UINib(nibName: "ComplementCell", bundle: nil), forCellReuseIdentifier: "ComplementCell")
         createDatePicker()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
     }
     
     func createToolbar () -> UIToolbar {
@@ -43,9 +41,9 @@ class MealViewController: UIViewController {
     }
     
     func createDatePicker(){
-        datePicker.preferredDatePickerStyle = .wheels
-        datePicker.datePickerMode = .time
-        txtFieldHour.inputView = datePicker
+        timeDatePicker.preferredDatePickerStyle = .wheels
+        timeDatePicker.datePickerMode = .time
+        txtFieldHour.inputView = timeDatePicker
         txtFieldHour.inputAccessoryView = createToolbar()
     }
     
@@ -53,30 +51,32 @@ class MealViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_gb")
         formatter.dateFormat = "HH:mm:ss"
-        txtFieldHour.text = formatter.string(from: datePicker.date)
+        txtFieldHour.text = formatter.string(from: timeDatePicker.date)
         view.endEditing(true)
     }
     
     
     @IBAction func btnSaveMeal(_ sender: UIButton) {
-       
+        
         if (txtFieldTitle.text?.count != 0 && txtFieldHour.text?.count != 0 && complementsArray.count > 0){
             
-            let newMeal = Meals(context: context)
-            newMeal.title = txtFieldTitle.text
+            let newMeal = Meal(context: context)
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH:mm:ss"
             let mealHour = dateFormatter.date(from: txtFieldHour.text!)
             
+            newMeal.title = txtFieldTitle.text
             newMeal.hour = mealHour
+            newMeal.day = selectedDay!
+            
             relateComplements(parentMeal: newMeal)
         } else {
             print("Meal has not been registered")
         }
     }
     
-    func relateComplements(parentMeal : Meals){
+    func relateComplements(parentMeal : Meal){
         for complement in complementsArray {
             complement.parentMeal = parentMeal
         }
@@ -128,7 +128,7 @@ extension MealViewController : UITableViewDataSource {
 //MARK: - ComplementsViewControllerDelegate Methods
 extension MealViewController : ComplementsViewControllerDelegate {
     
-    func sendDataToMealViewController(complementsList: [Complements]) {
+    func sendDataToMealViewController(complementsList: [Complement]) {
         complementsArray = complementsList
         complementsTableView.reloadData()
     }
@@ -148,19 +148,6 @@ extension MealViewController {
         
         self.navigationController?.popViewController(animated: true)
     }
-    
-//    func loadComplements(){
-//        let request : NSFetchRequest<Complements> = Complements.fetchRequest()
-//
-//        do{
-//            complementsArray = try context.fetch(request)
-//        } catch{
-//            print(error)
-//        }
-//
-//        complementsTableView.reloadData()
-//    }
-    
     
 }
 

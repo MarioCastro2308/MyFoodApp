@@ -10,7 +10,7 @@ import CoreData
 
 protocol ComplementsViewControllerDelegate {
     
-    func sendDataToMealViewController(complementsList  : [Complements])
+    func sendDataToMealViewController(complementsList  : [Complement])
 }
 
 class ComplementsViewController: UIViewController {
@@ -28,7 +28,7 @@ class ComplementsViewController: UIViewController {
     var nutritionDataManager : NutritionDataManager = NutritionDataManager()
     var delegate : ComplementsViewControllerDelegate? = nil
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var selectedComplements = [Complements]()
+    var selectedComplements = [Complement]()
     var selectedComplementData : NutritionModel?
     
     override func viewDidLoad() {
@@ -57,7 +57,7 @@ class ComplementsViewController: UIViewController {
     
    
     @IBAction func btnAddComponentAction(_ sender: UIButton) {
-        let newComplement = Complements(context: context)
+        let newComplement = Complement(context: context)
         
         if(selectedComplementData==nil){
             return
@@ -138,16 +138,4 @@ extension ComplementsViewController : NutritionDataManagerDelegate{
     func didFailWithError(error: Error) {
         print(error)
     }
-}
-
-//MARK: - DataManipulation Methods
-extension ComplementsViewController {
-    
-//    func saveComplement(){
-//        do{
-//            try context.save()
-//        } catch{
-//            print(error)
-//        }
-//    }
 }

@@ -101,11 +101,11 @@ extension SuperViewController: SideMenuViewControllerDelegate {
             let profileModalVC = storyboard.instantiateViewController(withIdentifier: "ProfileModalID") as? UserProfileViewController
             present(profileModalVC!, animated: true, completion: nil)
         case 2:
-            // Music
+            // Today Meals
             self.showViewController(viewController: UINavigationController.self, storyboardId: "TodayNavID")
         case 3:
-            // Movies
-            self.showViewController(viewController: UserProfileViewController.self, storyboardId: "profileNavID")
+            // Edith Profile
+            self.showViewController(viewController: UINavigationController.self, storyboardId: "WeakNavID")
         case 4:
             logout()
         default:

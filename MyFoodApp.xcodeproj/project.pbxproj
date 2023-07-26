@@ -22,6 +22,8 @@
 		313893652A44CE2700AE0A16 /* MealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313893642A44CE2700AE0A16 /* MealsTableViewController.swift */; };
 		313893672A44CE9900AE0A16 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313893662A44CE9900AE0A16 /* HomeViewController.swift */; };
 		313893692A44F94C00AE0A16 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313893682A44F94C00AE0A16 /* SideMenuViewController.swift */; };
+		31390DED2A70D06900F3CA26 /* FoodDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31390DEB2A70D06900F3CA26 /* FoodDataModel.xcdatamodeld */; };
+		31390DEF2A70E3E000F3CA26 /* WeakPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31390DEE2A70E3E000F3CA26 /* WeakPlanViewController.swift */; };
 		319BBF1F2A3B8B5A003A1C26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319BBF1E2A3B8B5A003A1C26 /* AppDelegate.swift */; };
 		319BBF212A3B8B5A003A1C26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319BBF202A3B8B5A003A1C26 /* SceneDelegate.swift */; };
 		319BBF232A3B8B5A003A1C26 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319BBF222A3B8B5A003A1C26 /* MainViewController.swift */; };
@@ -38,9 +40,9 @@
 		319EA6A82A6A5256000B99C6 /* MealCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319EA6A62A6A5256000B99C6 /* MealCell.xib */; };
 		319EA6AB2A6A5D32000B99C6 /* ComplementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6A92A6A5D32000B99C6 /* ComplementCell.swift */; };
 		319EA6AC2A6A5D32000B99C6 /* ComplementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319EA6AA2A6A5D32000B99C6 /* ComplementCell.xib */; };
-		319EA6AE2A6A61EA000B99C6 /* MealTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6AD2A6A61EA000B99C6 /* MealTest.swift */; };
 		31AB59582A6AD58E00DABF97 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31AB59562A6AD58E00DABF97 /* DataModel.xcdatamodeld */; };
 		31AB595A2A6ADCEA00DABF97 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AB59592A6ADCEA00DABF97 /* MealViewController.swift */; };
+		31B370812A71A9160045D77D /* MealDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B370802A71A9160045D77D /* MealDataModel.swift */; };
 		31E1448A2A6EDB2500CC46A2 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E144892A6EDB2500CC46A2 /* SaveButton.swift */; };
 		31E1448C2A6EE5A100CC46A2 /* ComplementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1448B2A6EE5A100CC46A2 /* ComplementsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +59,8 @@
 		313893642A44CE2700AE0A16 /* MealsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsTableViewController.swift; sourceTree = "<group>"; };
 		313893662A44CE9900AE0A16 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		313893682A44F94C00AE0A16 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		31390DEC2A70D06900F3CA26 /* FoodDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodDataModel.xcdatamodel; sourceTree = "<group>"; };
+		31390DEE2A70E3E000F3CA26 /* WeakPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakPlanViewController.swift; sourceTree = "<group>"; };
 		319BBF1B2A3B8B5A003A1C26 /* MyFoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFoodApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		319BBF1E2A3B8B5A003A1C26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		319BBF202A3B8B5A003A1C26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,9 +79,9 @@
 		319EA6A62A6A5256000B99C6 /* MealCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealCell.xib; sourceTree = "<group>"; };
 		319EA6A92A6A5D32000B99C6 /* ComplementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementCell.swift; sourceTree = "<group>"; };
 		319EA6AA2A6A5D32000B99C6 /* ComplementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComplementCell.xib; sourceTree = "<group>"; };
-		319EA6AD2A6A61EA000B99C6 /* MealTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTest.swift; sourceTree = "<group>"; };
 		31AB59572A6AD58E00DABF97 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		31AB59592A6ADCEA00DABF97 /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
+		31B370802A71A9160045D77D /* MealDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDataModel.swift; sourceTree = "<group>"; };
 		31E144892A6EDB2500CC46A2 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		31E1448B2A6EE5A100CC46A2 /* ComplementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,8 +108,9 @@
 				31304ED42A40BC3F004700CD /* NutritionData.swift */,
 				31304ED62A40DC9E004700CD /* NutritionModel.swift */,
 				319EA6992A69BEAA000B99C6 /* SideMenuModel.swift */,
-				319EA6AD2A6A61EA000B99C6 /* MealTest.swift */,
 				31AB59562A6AD58E00DABF97 /* DataModel.xcdatamodeld */,
+				31390DEB2A70D06900F3CA26 /* FoodDataModel.xcdatamodeld */,
+				31B370802A71A9160045D77D /* MealDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 				319EA6A32A69EAFF000B99C6 /* UserProfileViewController.swift */,
 				31AB59592A6ADCEA00DABF97 /* MealViewController.swift */,
 				31E1448B2A6EE5A100CC46A2 /* ComplementsViewController.swift */,
+				31390DEE2A70E3E000F3CA26 /* WeakPlanViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -286,15 +292,17 @@
 				31E1448A2A6EDB2500CC46A2 /* SaveButton.swift in Sources */,
 				319EA6A02A69BF51000B99C6 /* SuperViewController.swift in Sources */,
 				31E1448C2A6EE5A100CC46A2 /* ComplementsViewController.swift in Sources */,
+				31B370812A71A9160045D77D /* MealDataModel.swift in Sources */,
 				31304ED72A40DC9E004700CD /* NutritionModel.swift in Sources */,
 				31304ED32A40B7DD004700CD /* NutritionDataManager.swift in Sources */,
-				319EA6AE2A6A61EA000B99C6 /* MealTest.swift in Sources */,
 				319EA6A72A6A5256000B99C6 /* MealCell.swift in Sources */,
 				319EA6A22A69D898000B99C6 /* TodayMealsViewController.swift in Sources */,
 				31304ED52A40BC3F004700CD /* NutritionData.swift in Sources */,
 				313893652A44CE2700AE0A16 /* MealsTableViewController.swift in Sources */,
+				31390DED2A70D06900F3CA26 /* FoodDataModel.xcdatamodeld in Sources */,
 				313893672A44CE9900AE0A16 /* HomeViewController.swift in Sources */,
 				319EA69A2A69BEAA000B99C6 /* SideMenuModel.swift in Sources */,
+				31390DEF2A70E3E000F3CA26 /* WeakPlanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,6 +562,16 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
+		31390DEB2A70D06900F3CA26 /* FoodDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				31390DEC2A70D06900F3CA26 /* FoodDataModel.xcdatamodel */,
+			);
+			currentVersion = 31390DEC2A70D06900F3CA26 /* FoodDataModel.xcdatamodel */;
+			path = FoodDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		31AB59562A6AD58E00DABF97 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

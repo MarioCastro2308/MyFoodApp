@@ -11,6 +11,7 @@
         <relationship name="parentMeal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meals" inverseName="mealComplements" inverseEntity="Meals"/>
     </entity>
     <entity name="Meals" representedClassName=".Meals" syncable="YES" codeGenerationType="class">
+        <attribute name="day" attributeType="String"/>
         <attribute name="hour" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="mealComplements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Complements" inverseName="parentMeal" inverseEntity="Complements"/>
