@@ -31,19 +31,7 @@ class LoginViewController: UIViewController {
                     let vc = storyboard.instantiateViewController(withIdentifier: "SuperViewID") as! SuperViewController
                     
                     self.present(vc, animated: true)
-//                    self.view.insertSubview(vc.view, at: 1)
-//                    self.addChild(vc)
-//                    DispatchQueue.main.async {
-//                        vc.view.translatesAutoresizingMaskIntoConstraints = false
-//                        NSLayoutConstraint.activate([
-//                            vc.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-//                            vc.view.topAnchor.constraint(equalTo: self.view.topAnchor),
-//                            vc.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-//                            vc.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-//                        ])
-//                    }
-//
-//                    vc.didMove(toParent: self)
+
                 }
             }
         }

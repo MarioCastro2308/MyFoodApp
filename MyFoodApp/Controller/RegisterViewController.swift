@@ -21,12 +21,19 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func btnRegisterAction(_ sender: UIButton) {
+        
         if let email = txtFieldEmail.text, let password = txtFieldPassword.text {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                
                 if let e = error {
                     print("Register error: \(e.localizedDescription)")
                 } else{
-                    self.performSegue(withIdentifier: "RegisterToMain", sender: self)
+//                    self.performSegue(withIdentifier: "RegisterToMain", sender: self)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "SuperViewID") as! SuperViewController
+                    
+                    self.present(vc, animated: true)
+
                 }
             }
         }

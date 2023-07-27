@@ -9,5 +9,6 @@ import Foundation
 
 struct MealDataModel {
     let mealTitle : String
+    let mealHour : String
     let mealComplements : [Complement]
 }

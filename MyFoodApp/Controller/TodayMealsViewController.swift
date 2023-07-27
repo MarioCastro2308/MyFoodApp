@@ -18,14 +18,8 @@ class TodayMealsViewController: UIViewController {
     var mealsArray = [Meal]()
     var complementsArray = [Complement]()
     var mealsData = [MealDataModel]()
-    
-    var selectedDay : String? {
-        didSet {
-            loadMeals(for: selectedDay!)
-            self.title = selectedDay
-            
-        }
-    }
+
+    var selectedDay : String?
    
     
     override func viewDidLoad() {
@@ -38,26 +32,42 @@ class TodayMealsViewController: UIViewController {
         btnSideMenu.action = #selector(revealViewController()?.revealSideMenu)
         // Register custom cell
         mealsTableView.register(UINib(nibName: "ComplementCell", bundle: nil), forCellReuseIdentifier: "ComplementCell")
+    }
+    
+    func loadMealsData(){
         
+        print("Loading meals...")
         if(selectedDay == nil ){
             getCurrentDayMeals()
+        } else {
+            loadMeals(for: selectedDay!)
         }
     }
     
+    // si la variable selectedDay == nil se le asignara el valor del dia actual
     func getCurrentDayMeals(){
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
         selectedDay = dateFormatter.string(from: date)
+        
+        loadMeals(for: selectedDay!)
     }
     
+    // Se obtiene la lista de complementos para cada comida del arreglo
     func getComplements(){
         for meal in mealsArray{
             loadComplements(mealTitle: meal.title!)
-            mealsData.append(MealDataModel(mealTitle: meal.title!, mealComplements: complementsArray))
+            
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en")
+            formatter.dateFormat = "hh:mm a"
+            let hour = formatter.string(from: meal.hour!)
+            
+            mealsData.append(MealDataModel(mealTitle: meal.title!, mealHour: hour, mealComplements: complementsArray))
         }
         
-        print("Number of meals: \(mealsData.count)")
+        mealsTableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -68,10 +78,9 @@ class TodayMealsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        mealsTableView.reloadData()
+        mealsData = []
+        loadMealsData()
     }
-    
-    
 }
 
 //MARK: - UITableViewControllerDelegate Methods
@@ -95,12 +104,7 @@ extension TodayMealsViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(mealsData.count > 0){
-//            loadComplements(mealTitle: mealsArray[section].title!)
-//            mealsData.append(MealDataModel(mealTitle: mealsArray[section].title!, mealComplements: complementsArray))
-//            print("Meal: \(mealsData)")
-//            return complementsArray.count
             return mealsData[section].mealComplements.count + 1
-            
         } else {
             return 1
         }
@@ -115,13 +119,24 @@ extension TodayMealsViewController : UITableViewDataSource {
             // si se trata de a primera celda (section title)
             if(indexPath.row == 0) {
                 
-                let mealTitle = mealsData[indexPath.section].mealTitle
-                cell.lblName.text = mealTitle
-                cell.lblQuantity.text = ""
+                let meal = mealsData[indexPath.section]
+                
+                cell.lblName.text = meal.mealTitle.uppercased()
+                cell.lblQuantity.text = meal.mealHour
+                
+                
+                cell.contentView.backgroundColor = #colorLiteral(red: 0.2666666667, green: 0.4784313725, blue: 0.2156862745, alpha: 1)
+                cell.lblName.textColor = UIColor.white
+                cell.lblQuantity.textColor = UIColor.white
+                
             } else {
                 let complement = mealsData[indexPath.section].mealComplements[indexPath.row - 1]
                 cell.lblName.text = complement.name
                 cell.lblQuantity.text = "\(complement.quantity)"
+                
+                cell.contentView.backgroundColor = UIColor.white
+                cell.lblName.textColor = UIColor.black
+                cell.lblQuantity.textColor = UIColor.black
             }
             
         } else {
@@ -162,7 +177,12 @@ extension TodayMealsViewController {
 
         do{
             mealsArray = try context.fetch(request)
-            getComplements()
+            
+            if(mealsArray.count > 0){
+                getComplements()
+            } else {
+                mealsTableView.reloadData()
+            }
         } catch {
             print("Error loading meals \(error)")
         }

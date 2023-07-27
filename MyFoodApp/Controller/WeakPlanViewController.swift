@@ -20,9 +20,10 @@ class WeakPlanViewController: UIViewController {
     
     var mealsArray = [Meal]()
     var complementsArray = [Complement]()
+    var mealsData = [MealDataModel]()
     
     let dayPickerView = UIPickerView()
-    var selectedDay : String = "lunes"
+    var selectedDay : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,7 @@ class WeakPlanViewController: UIViewController {
         mealsTableView.dataSource = self
         
         txtFieldDay.inputView = dayPickerView
-        txtFieldDay.text = selectedDay
+        txtFieldDay.text = daysArray[0]
         dayPickerView.dataSource = self
         dayPickerView.delegate = self
         // Side Menu button
@@ -38,17 +39,41 @@ class WeakPlanViewController: UIViewController {
         btnSideMenu.action = #selector(revealViewController()?.revealSideMenu)
         // Tebleview Cell
         mealsTableView.register(UINib(nibName: "ComplementCell", bundle: nil), forCellReuseIdentifier: "ComplementCell")
-        
+        loadMealData()
     }
     
     
     @IBAction func btnSearchAction(_ sender: UIButton) {
-        
-        loadMeals(for: selectedDay)
-        
+        mealsData = []
+        print("Meals before get loadmeals:  \(mealsData.count)")
         print(selectedDay)
-        print(mealsArray)
-        
+        loadMealData()
+    }
+    
+    func loadMealData(){
+        print("Loading meals...")
+        if(selectedDay == nil ){
+            selectedDay = daysArray[0]
+            loadMeals(for: selectedDay!)
+        } else {
+            loadMeals(for: selectedDay!)
+        }
+    }
+    
+    // Se obtiene la lista de complementos para cada comida del arreglo
+    func getComplements(){
+        for meal in mealsArray{
+            loadComplements(mealTitle: meal.title!)
+            
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en")
+            formatter.dateFormat = "hh:mm a"
+            let hour = formatter.string(from: meal.hour!)
+            
+            mealsData.append(MealDataModel(mealTitle: meal.title!, mealHour: hour, mealComplements: complementsArray))
+        }
+        print("Meals after get complements:  \(mealsData.count)")
+        mealsTableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,9 +82,6 @@ class WeakPlanViewController: UIViewController {
             mealVC.selectedDay = selectedDay
         }
     }
-    
-    
-    
 }
 
 //MARK: - UIPickerViewDatasource Methods
@@ -87,44 +109,57 @@ extension WeakPlanViewController : UIPickerViewDataSource, UIPickerViewDelegate 
 extension WeakPlanViewController : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if(mealsArray.count > 0){
-            return mealsArray.count
+        if(mealsData.count > 0){
+            return mealsData.count
         } else {
             return 1
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(mealsArray.count > 0){
-            loadComplements(mealTitle: mealsArray[section].title!)
-            return complementsArray.count
+        if(mealsData.count > 0){
+            return mealsData[section].mealComplements.count + 1
         } else {
             return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
         let cell = tableView.dequeueReusableCell(withIdentifier: "ComplementCell", for: indexPath) as! ComplementCell
         
-        
         // si hay alguna comida establecida para el dia de hoy
-        if(mealsArray.count > 0){
+        if(mealsData.count > 0){
+            
             // si se trata de a primera celda (section title)
             if(indexPath.row == 0) {
-                let meal = mealsArray[indexPath.section]
-                cell.lblName.text = meal.title
-                cell.lblQuantity.text = ""
+                
+                let meal = mealsData[indexPath.section]
+                
+                cell.lblName.text = meal.mealTitle.uppercased()
+                cell.lblQuantity.text = meal.mealHour
+                
+                cell.contentView.backgroundColor = #colorLiteral(red: 0.2666666667, green: 0.4784313725, blue: 0.2156862745, alpha: 1)
+                cell.lblName.textColor = UIColor.white
+                cell.lblQuantity.textColor = UIColor.white
+                
             } else {
-                let complement = complementsArray[indexPath.row]
+                let complement = mealsData[indexPath.section].mealComplements[indexPath.row - 1]
+                
                 cell.lblName.text = complement.name
                 cell.lblQuantity.text = "\(complement.quantity)"
+                
+                cell.contentView.backgroundColor = UIColor.white
+                cell.lblName.textColor = UIColor.black
+                cell.lblQuantity.textColor = UIColor.black
             }
-            
         } else {
             cell.lblName.text = "No meal added yet"
             cell.lblQuantity.text = ""
         }
+        
         return cell
+        
     }
 }
 
@@ -141,6 +176,11 @@ extension WeakPlanViewController {
         
         do{
             mealsArray = try context.fetch(request)
+            if(mealsArray.count > 0){
+                getComplements()
+            } else {
+                mealsTableView.reloadData()
+            }
         } catch {
             print("Error loading meals \(error)")
         }
