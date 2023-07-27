@@ -42,7 +42,7 @@ class SideMenuViewController: UIViewController {
         // TableView
         self.sideMenuTableView.delegate = self
         self.sideMenuTableView.dataSource = self
-        self.sideMenuTableView.backgroundColor = #colorLiteral(red: 0.737254902, green: 0.1294117647, blue: 0.2941176471, alpha: 1)
+        self.sideMenuTableView.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 1, alpha: 1)
         self.sideMenuTableView.separatorStyle = .none
 
         // Set Highlighted Cell
@@ -88,7 +88,7 @@ extension SideMenuViewController: UITableViewDataSource {
 
         // Highlighted color
         let myCustomSelectionColorView = UIView()
-        myCustomSelectionColorView.backgroundColor = #colorLiteral(red: 0.6196078431, green: 0.1098039216, blue: 0.2509803922, alpha: 1)
+        myCustomSelectionColorView.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.5019607843, blue: 0.7254901961, alpha: 1)
         cell.selectedBackgroundView = myCustomSelectionColorView
         return cell
     }
