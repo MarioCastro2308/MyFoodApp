@@ -30,6 +30,7 @@ class BlueButton: UIButton {
 //        self.tintColor = UIColor.brown
         titleLabel!.textColor = UIColor.white
         titleLabel!.font = UIFont(name: "Cherry Bomb One", size: 20)
+        titleLabel?.lineBreakMode = .byClipping
         layer.cornerRadius = 10
         layer.borderWidth = 1
         layer.borderColor = UIColor.black.cgColor

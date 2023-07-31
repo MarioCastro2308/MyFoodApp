@@ -30,6 +30,7 @@ class WhiteButton: UIButton {
 //        self.tintColor = UIColor.brown
         titleLabel!.textColor = UIColor.black
         titleLabel!.font = UIFont(name: "Cherry Bomb One", size: 20)
+        titleLabel?.lineBreakMode = .byClipping
         layer.cornerRadius = 25
         layer.borderWidth = 2
         layer.borderColor = UIColor.black.cgColor

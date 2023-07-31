@@ -73,22 +73,6 @@ class TodayMealsViewController: UIViewController {
         return currentDay
     }
     
-    // Get the complements for the given list of meals
-//    func getComplements(for meals : [Meal]){
-//        for meal in meals{
-//            mealsDataManager.loadComplements(selectedDay: meal.day!, mealTitle: meal.title!) { complements in
-//
-//                let formatter = DateFormatter()
-//                formatter.locale = Locale(identifier: "en")
-//                formatter.dateFormat = "hh:mm a"
-//                let hour = formatter.string(from: meal.hour!)
-//
-//                mealsData.append(MealDataModel(mealTitle: meal.title!, mealHour: hour, mealComplements: complements))
-//            }
-//        }
-//        mealsTableView.reloadData()
-//    }
-    
     func getComplements(for meals : [Meal]){
         for meal in meals {
             mealsDataManager.loadComplements(for: meal, completionHandler: { complements in
@@ -127,9 +111,11 @@ class TodayMealsViewController: UIViewController {
 extension TodayMealsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        selectedMealTitle = mealsData[indexPath.section].mealTitle
-//        selectedMeal = mealsData[indexPath.section]
-        performSegue(withIdentifier: "goToMealDetails", sender: self)
+        if(!mealsData.isEmpty) {
+            selectedMealTitle = mealsData[indexPath.section].mealTitle
+
+            performSegue(withIdentifier: "goToMealDetails", sender: self)
+        }
     }
 }
 

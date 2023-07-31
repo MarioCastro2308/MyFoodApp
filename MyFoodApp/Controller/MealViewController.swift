@@ -19,13 +19,18 @@ class MealViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let mealsDataManager = MealsDataManager()
-    var complementsArray = [Complement]()
+    
+    var complementsArray = [Complement]() // Used to show data in tableview
+    var complementsBackupArray = [Complement]() // Used to store a complements backup
+    var complementsToDeleteArray = [Complement]() // Used to store the complements to delete
+    
     let timeDatePicker = UIDatePicker()
     
     var selectedDay : String?
     var selectedMealTitle : String?
-    var selectedMeal : Meal?
-    //    var selectedMeal : MealDataModel?
+    var isAnExistingMeal : Bool = false
+    
+    var targetMeal : Meal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,43 +40,42 @@ class MealViewController: UIViewController {
         complementsTableView.register(UINib(nibName: "ComplementCell", bundle: nil), forCellReuseIdentifier: "ComplementCell")
         createDatePicker()
         
+        // If a meal has been selected
         if(selectedMealTitle != nil ) {
+            isAnExistingMeal = true
             getMealData()
         }
     }
     
-    func getMealData(){
+    // We obtain the information of the selected meal
+    func getMealData() {
         mealsDataManager.loadMeal(selectedDay: selectedDay!, mealTitle: selectedMealTitle!) { meal in
-            selectedMeal = meal
+            targetMeal = meal
             getComplements(for: meal)
         }
     }
     
+    // We get the list of complements related to the selected food
     func getComplements(for meal : Meal){
         mealsDataManager.loadComplements(for: meal) { complements in
-            
             updateFormData(mealData: meal, complements: complements)
         }
     }
     
-    
-    
+    // Displays the information obtained from the selected food
     func updateFormData(mealData : Meal , complements : [Complement]){
-        
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en")
-        formatter.dateFormat = "HH:mm:ss"
-        let hour = formatter.string(from: mealData.hour!)
-        
+//        let formatter = DateFormatter()
+//        formatter.locale = Locale(identifier: "en")
+//        formatter.dateFormat = "HH:mm:ss"
+//        let hour = formatter.string(from: mealData.hour!)
+//
         txtFieldTitle.text = mealData.title
-        txtFieldHour.text = hour
+        txtFieldHour.text = getStringHour(from: mealData.hour!)
         complementsArray = complements
-        
-        //        relateComplements(parentMeal: selectedMeal!)
         complementsTableView.reloadData()
     }
     
-    
+    // Created a toolbar
     func createToolbar () -> UIToolbar {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -82,6 +86,7 @@ class MealViewController: UIViewController {
         return toolBar
     }
     
+    // Created a datePicker
     func createDatePicker(){
         timeDatePicker.preferredDatePickerStyle = .wheels
         timeDatePicker.datePickerMode = .time
@@ -90,29 +95,30 @@ class MealViewController: UIViewController {
     }
     
     @objc func doneButtonAction (){
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en")
-        formatter.dateFormat = "HH:mm:ss"
-        txtFieldHour.text = formatter.string(from: timeDatePicker.date)
+//        let formatter = DateFormatter()
+//        formatter.locale = Locale(identifier: "en")
+//        formatter.dateFormat = "HH:mm:ss"
+//        txtFieldHour.text = formatter.string(from: timeDatePicker.date)
+        txtFieldHour.text = getStringHour(from: timeDatePicker.date)
         view.endEditing(true)
     }
     
+    // If the information in the form is valid, update or save the information in the context
     @IBAction func btnSaveMeal(_ sender: UIButton) {
         
         if validateFormData() {
             
-            if(selectedMeal != nil){
+            if(isAnExistingMeal){
                 updateMeal()
             } else {
                 saveNewMeal()
             }
-            
-            
         } else {
-            showMessageAlert(title: "Error", message: "Invalid data")
+            showMessageAlert(title: "Error", message: "Error saving meal data")
         }
     }
     
+    // Validates the information on the form
     func validateFormData() -> Bool {
         
         if let mealTitle = txtFieldTitle.text, !mealTitle.isEmpty,
@@ -125,89 +131,77 @@ class MealViewController: UIViewController {
         }
     }
     
+    // Update the information of the selected meal
     func updateMeal(){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
-        let mealHourDate = dateFormatter.date(from: txtFieldHour.text!)
         
-        selectedMeal!.title = txtFieldTitle.text!
-        selectedMeal?.hour = mealHourDate
+        targetMeal!.title = txtFieldTitle.text!
+        targetMeal?.hour = getDateHour(from: txtFieldHour.text!)
         
         let nutrients = getTotalNutrients()
+        targetMeal!.kcal = nutrients["kcal"]!
+        targetMeal!.proteins = nutrients["proteins"]!
+        targetMeal!.carbs = nutrients["carbs"]!
+        targetMeal!.fats = nutrients["fats"]!
         
-        selectedMeal!.kcal = nutrients["kcal"]!
-        selectedMeal!.proteins = nutrients["proteins"]!
-        selectedMeal!.carbs = nutrients["carbs"]!
-        selectedMeal!.fats = nutrients["fats"]!
-        
-        relateComplements(parentMeal: selectedMeal!)
+        deleteSelectedComplements()
+        relateComplements(with: targetMeal!)
     }
     
+    // Removes the complements selected to be removed
+    func deleteSelectedComplements(){
+        if !complementsToDeleteArray.isEmpty {
+            for complement in complementsToDeleteArray {
+                context.delete(complement)
+            }
+        }
+    }
+    
+    // Save the information of the new Meal
     func saveNewMeal(){
         
         if let currentUserEmail = Auth.auth().currentUser?.email {
     
             let newMeal = Meal(context: context)
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "HH:mm:ss"
-            let mealHourDate = dateFormatter.date(from: txtFieldHour.text!)
-            
             newMeal.title = txtFieldTitle.text!
-            newMeal.hour = mealHourDate
+            newMeal.hour = getDateHour(from: txtFieldHour.text!)
             newMeal.day = selectedDay!
             newMeal.userEmail = currentUserEmail
             
             let nutrients = getTotalNutrients()
-            
             newMeal.kcal = nutrients["kcal"]!
             newMeal.proteins = nutrients["proteins"]!
             newMeal.carbs = nutrients["carbs"]!
             newMeal.fats = nutrients["fats"]!
             
-            relateComplements(parentMeal: newMeal)
+            relateComplements(with: newMeal)
             
         }
     }
     
     
+    @IBAction func btnDeleteMealAction(_ sender: UIButton) {
+        
+        if(isAnExistingMeal){
+            context.delete(targetMeal!)
+            if(!complementsBackupArray.isEmpty){
+                for complement in complementsBackupArray {
+                    context.delete(complement)
+                }
+            }
+            saveMeal()
+        } else {
+            txtFieldTitle.text = ""
+            txtFieldHour.text = ""
+            complementsArray = []
+            complementsTableView.reloadData()
+        }
+    }
     
-    //    @IBAction func btnSaveMeal(_ sender: UIButton) {
-    //
-    //        if let mealTitle = txtFieldTitle.text, !mealTitle.isEmpty,
-    //           let mealHour = txtFieldHour.text, !mealHour.isEmpty,
-    //           let currentUserEmail = Auth.auth().currentUser?.email,
-    //           !complementsArray.isEmpty{
-    //
-    //            let newMeal = Meal(context: context)
-    //
-    //            let dateFormatter = DateFormatter()
-    //            dateFormatter.dateFormat = "HH:mm:ss"
-    //            let mealHourDate = dateFormatter.date(from: mealHour)
-    //
-    //            newMeal.title = mealTitle
-    //            newMeal.hour = mealHourDate
-    //            newMeal.day = selectedDay!
-    //            newMeal.userEmail = currentUserEmail
-    //
-    //            let nutrients = getTotalNutrients()
-    //
-    //            newMeal.kcal = nutrients["kcal"]!
-    //            newMeal.proteins = nutrients["proteins"]!
-    //            newMeal.carbs = nutrients["carbs"]!
-    //            newMeal.fats = nutrients["fats"]!
-    //
-    //            relateComplements(parentMeal: newMeal)
-    //        } else {
-    //            showMessageAlert(title: "Error", message: "Invalid data")
-    //        }
-    //    }
-    
-    func relateComplements(parentMeal : Meal){
+    // Relate each complement with the selected food
+    func relateComplements(with parentMeal : Meal){
         for complement in complementsArray {
             complement.parentMeal = parentMeal
         }
-        
         saveMeal()
     }
     
@@ -243,17 +237,36 @@ class MealViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true)
     }
+    
+    // Returns the hour in the given format (String)
+    func getStringHour(from dateHour : Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en")
+        formatter.dateFormat = "hh:mm a"
+        return formatter.string(from: dateHour)
+    }
+    
+    // Returns the hour in the given format (Date)
+    func getDateHour(from txtHour : String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en")
+        dateFormatter.dateFormat = "hh:mm a"
+        return dateFormatter.date(from: txtHour)!
+    }
 }
 
 //MARK: - UITableViewDelegate Methods
 extension MealViewController : UITableViewDelegate {
     
+    // When a cell is selected it is removed from the complementsArray but not from the context
+    // In addition, the selected cell is added to the complementsToDeleteArray for future deletion.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        context.delete(complementsArray[indexPath.row])
         
-        complementsArray.remove(at: indexPath.row)
-        
-        saveComplements()
+        if(!complementsArray.isEmpty) {
+            complementsToDeleteArray.append(complementsArray[indexPath.row])
+            complementsArray.remove(at: indexPath.row)
+            complementsTableView.reloadData()
+        }
     }
 }
 
@@ -266,7 +279,6 @@ extension MealViewController : UITableViewDataSource {
         } else {
             return 1
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -292,10 +304,9 @@ extension MealViewController : ComplementsViewControllerDelegate {
     func sendDataToMealViewController(complementsList: [Complement]) {
         print("SendData")
         complementsArray = complementsList
+        complementsBackupArray = complementsList
         complementsTableView.reloadData()
     }
-    
-    
 }
 
 //MARK: - DataManipulation Methods
@@ -309,15 +320,6 @@ extension MealViewController {
         }
         
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    func saveComplements(){
-        do{
-            try context.save()
-            complementsTableView.reloadData()
-        } catch{
-            print("Error Saving the context : \(error)")
-        }
     }
     
 }
