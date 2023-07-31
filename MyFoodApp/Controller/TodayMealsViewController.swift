@@ -6,21 +6,15 @@
 //
 
 import UIKit
-import CoreData
-import FirebaseAuth
-import FirebaseFirestore
 
 class TodayMealsViewController: UIViewController {
     
     @IBOutlet weak var btnSideMenu: UIBarButtonItem!
     @IBOutlet weak var mealsTableView: UITableView!
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     var mealsDataManager = MealsDataManager()
     var mealsData = [MealDataModel]()
     var selectedDay : String?
-//    var selectedMeal : String?
     var selectedMealTitle : String?
     
     override func viewDidLoad() {
@@ -31,8 +25,9 @@ class TodayMealsViewController: UIViewController {
         // Side Menu Button
         btnSideMenu.target = revealViewController()
         btnSideMenu.action = #selector(revealViewController()?.revealSideMenu)
-        // Register custom cell
-        mealsTableView.register(UINib(nibName: "ComplementCell", bundle: nil), forCellReuseIdentifier: "ComplementCell")
+        // Custom cells
+        mealsTableView.register(UINib(nibName: K.CustomCell.complementCell, bundle: nil), forCellReuseIdentifier: K.CustomCell.complementCell)
+        mealsTableView.register(UINib(nibName: K.CustomCell.mealHeaderCell, bundle: nil), forCellReuseIdentifier: K.CustomCell.mealHeaderCell)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +48,7 @@ class TodayMealsViewController: UIViewController {
                 }
             }
         } else {
+            self.title = selectedDay!.uppercased()
             mealsDataManager.loadMeals(for: selectedDay!) { meals in
                 
                 if !meals.isEmpty {
@@ -91,7 +87,7 @@ class TodayMealsViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToMealDetails" {
+        if segue.identifier == K.Segues.toMealDetails {
             let mealVC: MealViewController = segue.destination as! MealViewController
             
             if(selectedDay == nil){
@@ -100,7 +96,6 @@ class TodayMealsViewController: UIViewController {
                 mealVC.selectedDay = selectedDay
             }
             
-//            mealVC.selectedMealTitle = selectedMeal
             mealVC.selectedMealTitle = selectedMealTitle
         }
     }
@@ -114,7 +109,7 @@ extension TodayMealsViewController : UITableViewDelegate {
         if(!mealsData.isEmpty) {
             selectedMealTitle = mealsData[indexPath.section].mealTitle
 
-            performSegue(withIdentifier: "goToMealDetails", sender: self)
+            performSegue(withIdentifier: K.Segues.toMealDetails, sender: self)
         }
     }
 }
@@ -143,38 +138,39 @@ extension TodayMealsViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ComplementCell", for: indexPath) as! ComplementCell
-        
-        // si hay alguna comida establecida para el dia de hoy
         if(!mealsData.isEmpty){
-            // si se trata de a primera celda (section title)
+            // Section Header
             if(indexPath.row == 0) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: K.CustomCell.mealHeaderCell, for: indexPath) as! MealHeaderCell
                 
                 let meal = mealsData[indexPath.section]
                 
-                cell.lblName.text = meal.mealTitle.uppercased()
-                cell.lblQuantity.text = meal.mealHour
+                cell.lblTitle.text = meal.mealTitle.uppercased()
+                cell.lblHour.text = meal.mealHour
                 
-                
-                cell.contentView.backgroundColor = #colorLiteral(red: 0.2666666667, green: 0.4784313725, blue: 0.2156862745, alpha: 1)
-                cell.lblName.textColor = UIColor.white
-                cell.lblQuantity.textColor = UIColor.white
+                return cell
                 
             } else {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: K.CustomCell.complementCell, for: indexPath) as! ComplementCell
+                
                 let complement = mealsData[indexPath.section].mealComplements[indexPath.row - 1]
+                
                 cell.lblName.text = complement.name
                 cell.lblQuantity.text = "\(complement.quantity) \(complement.measure!)"
                 
-                cell.contentView.backgroundColor = UIColor.white
-                cell.lblName.textColor = UIColor.black
-                cell.lblQuantity.textColor = UIColor.black
+                return cell
             }
             
         } else {
-            cell.lblName.text = "No meal added yet"
-            cell.lblQuantity.text = ""
+            let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+            
+            var content = cell.defaultContentConfiguration()
+            content.text = "No registered meals yet"
+            
+            cell.contentConfiguration = content
+            
+            return cell
         }
-        
-        return cell
     }
 }

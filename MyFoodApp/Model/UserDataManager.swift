@@ -48,4 +48,26 @@ class UserDataManager {
             print("El usuario no fue encontrado")
         }
     }
+    
+    
+    func saveUserData(data : UserDataModel, completionHandler : @escaping (Error?) -> Void){
+
+        let usersColection = db.collection(K.FStore.colectionName)
+        let userEmail = data.userEmail
+        
+        usersColection.document(userEmail).setData([
+            K.FStore.emailField : data.userEmail,
+            K.FStore.usernameField : data.userName,
+            K.FStore.heightField : data.userHeight,
+            K.FStore.weightField : data.userWeight,
+            K.FStore.genderField : data.userGender,
+            K.FStore.ageField : data.userAge
+        ]) { error in
+            if let e = error {
+                completionHandler(e)
+            } else {
+                completionHandler(nil)
+            }
+        }
+    }
 }

@@ -140,6 +140,9 @@ extension ComplementsViewController : NutritionDataManagerDelegate{
     }
     
     func didFailWithError(error: Error) {
-        print(error)
+//        print(error)
+        DispatchQueue.main.async {
+            self.showMessageAlert(title: "Error", message: "Meal not found. Try again!")
+        }
     }
 }

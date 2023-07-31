@@ -17,7 +17,6 @@ class MealViewController: UIViewController {
     @IBOutlet weak var complementsTableView: UITableView!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     let mealsDataManager = MealsDataManager()
     
     var complementsArray = [Complement]() // Used to show data in tableview

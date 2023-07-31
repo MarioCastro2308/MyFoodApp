@@ -7,7 +7,6 @@
 
 import UIKit
 import FirebaseAuth
-import FirebaseFirestore
 
 class UserProfileViewController: UIViewController {
 
@@ -23,12 +22,7 @@ class UserProfileViewController: UIViewController {
     let pickerView = UIPickerView()
     let genderArray = ["Male", "Female"]
     var userData : UserDataModel?
-    
-    var currentUserEmail : String?
-    
-    
-    let db = Firestore.firestore()
-    
+    let userDataManager = UserDataManager()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,12 +42,26 @@ class UserProfileViewController: UIViewController {
     }
     
     
+    func getUserData(){
+        userDataManager.getUserData { data in
+            self.userData = data
+            self.updateFormData()
+        }
+    }
+    
     @IBAction func btnSaveDataAction(_ sender: UIButton) {
         if(validateUserData()){
-            saveUserData()
+//            saveUserData()
+            userDataManager.saveUserData(data: userData!) { error in
+                if let e = error {
+                    self.showMessageAlert(title: "Error!", message: "Error registering user information")
+                } else {
+                    self.showMessageAlert(title: "Success!", message: "User information successfully registered")
+                }
+            }
         }
         else {
-            print("Invalid Data")
+            showMessageAlert(title: "invalid Data", message: "The information entered is wrong")
         }
     }
     
@@ -113,68 +121,7 @@ extension UserProfileViewController : UIPickerViewDelegate,UIPickerViewDataSourc
     }
 
     func pickerView(_ pickerView:UIPickerView,didSelectRow row: Int,inComponent component: Int){
-        // yiuaosd
         txtFieldGender.text = genderArray[row]
         txtFieldGender.resignFirstResponder()
-    }
-}
-
-//MARK: - FireStore DataManipulationMethods
-extension UserProfileViewController{
-    
-    // Gets the information of the currently logged in user
-    func getUserData(){
-        
-        if let userEmail = Auth.auth().currentUser?.email {
-            let usersColection = db.collection(K.FStore.colectionName)
-            let query = usersColection.whereField(K.FStore.emailField, isEqualTo: userEmail)
-            
-            query.getDocuments { querySnapshot, error in
-                
-                if let e = error {
-                    print("Error retrieving data from firebase: \(e)")
-                } else {
-                    
-                    if let snapshotDocuments = querySnapshot?.documents, !snapshotDocuments.isEmpty {
-                        
-                        for doc in snapshotDocuments {
-                            print(doc.data())
-                            let currentUserData = doc.data()
-                            
-                            self.userData = UserDataModel(userEmail: currentUserData["userEmail"] as! String, userName: currentUserData["userName"] as! String, userHeight: currentUserData["userHeight"] as! Float, userWeight: currentUserData["userWeight"] as! Float, userGender: currentUserData["userGender"] as! String, userAge: currentUserData["userAge"] as! Int)
-                            
-                            self.updateFormData()
-                        }
-                    }
-                    else {
-                        print("User Data not found")
-                    }
-                }
-            }
-        } else {
-            print("Current user not found")
-        }
-    }
-    
-    func saveUserData(){
-
-        let usersColection = db.collection(K.FStore.colectionName)
-        let userEmail = userData!.userEmail
-        
-        usersColection.document(userEmail).setData([
-            K.FStore.emailField : userData!.userEmail,
-            K.FStore.usernameField : userData!.userName,
-            K.FStore.heightField : userData!.userHeight,
-            K.FStore.weightField : userData!.userWeight,
-            K.FStore.genderField : userData!.userGender,
-            K.FStore.ageField : userData!.userAge
-        ]) { error in
-            if let e = error {
-                self.showMessageAlert(title: "Error!", message: "Error registering user information")
-            } else {
-                self.showMessageAlert(title: "Success!", message: "User information successfully registered")
-                //                self.getUserData()
-            }
-        }
     }
 }
