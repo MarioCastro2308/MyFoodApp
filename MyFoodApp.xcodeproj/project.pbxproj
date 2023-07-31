@@ -39,12 +39,16 @@
 		319EA6A82A6A5256000B99C6 /* MealCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319EA6A62A6A5256000B99C6 /* MealCell.xib */; };
 		319EA6AB2A6A5D32000B99C6 /* ComplementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319EA6A92A6A5D32000B99C6 /* ComplementCell.swift */; };
 		319EA6AC2A6A5D32000B99C6 /* ComplementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319EA6AA2A6A5D32000B99C6 /* ComplementCell.xib */; };
-		31AB59582A6AD58E00DABF97 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31AB59562A6AD58E00DABF97 /* DataModel.xcdatamodeld */; };
 		31AB595A2A6ADCEA00DABF97 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AB59592A6ADCEA00DABF97 /* MealViewController.swift */; };
 		31B370812A71A9160045D77D /* MealDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B370802A71A9160045D77D /* MealDataModel.swift */; };
 		31B370832A71C6940045D77D /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B370822A71C6940045D77D /* GradientView.swift */; };
 		31B370852A7225AE0045D77D /* GreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B370842A7225AE0045D77D /* GreenButton.swift */; };
 		31B370872A7231810045D77D /* WhiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B370862A7231810045D77D /* WhiteButton.swift */; };
+		31BC55932A72F09800D02DA9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC55922A72F09800D02DA9 /* Constants.swift */; };
+		31BC55952A72F2D700D02DA9 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC55942A72F2D700D02DA9 /* UserDataModel.swift */; };
+		31BC55972A740BA200D02DA9 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC55962A740BA200D02DA9 /* UserDataManager.swift */; };
+		31BC55992A744D0E00D02DA9 /* MealsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC55982A744D0E00D02DA9 /* MealsDataManager.swift */; };
+		31BC559B2A7462B200D02DA9 /* BlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC559A2A7462B200D02DA9 /* BlueButton.swift */; };
 		31E1448A2A6EDB2500CC46A2 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E144892A6EDB2500CC46A2 /* SaveButton.swift */; };
 		31E1448C2A6EE5A100CC46A2 /* ComplementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1448B2A6EE5A100CC46A2 /* ComplementsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -80,12 +84,16 @@
 		319EA6A62A6A5256000B99C6 /* MealCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealCell.xib; sourceTree = "<group>"; };
 		319EA6A92A6A5D32000B99C6 /* ComplementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementCell.swift; sourceTree = "<group>"; };
 		319EA6AA2A6A5D32000B99C6 /* ComplementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComplementCell.xib; sourceTree = "<group>"; };
-		31AB59572A6AD58E00DABF97 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		31AB59592A6ADCEA00DABF97 /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		31B370802A71A9160045D77D /* MealDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDataModel.swift; sourceTree = "<group>"; };
 		31B370822A71C6940045D77D /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		31B370842A7225AE0045D77D /* GreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenButton.swift; sourceTree = "<group>"; };
 		31B370862A7231810045D77D /* WhiteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteButton.swift; sourceTree = "<group>"; };
+		31BC55922A72F09800D02DA9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		31BC55942A72F2D700D02DA9 /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
+		31BC55962A740BA200D02DA9 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		31BC55982A744D0E00D02DA9 /* MealsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsDataManager.swift; sourceTree = "<group>"; };
+		31BC559A2A7462B200D02DA9 /* BlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButton.swift; sourceTree = "<group>"; };
 		31E144892A6EDB2500CC46A2 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		31E1448B2A6EE5A100CC46A2 /* ComplementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,9 +120,11 @@
 				31304ED42A40BC3F004700CD /* NutritionData.swift */,
 				31304ED62A40DC9E004700CD /* NutritionModel.swift */,
 				319EA6992A69BEAA000B99C6 /* SideMenuModel.swift */,
-				31AB59562A6AD58E00DABF97 /* DataModel.xcdatamodeld */,
 				31390DEB2A70D06900F3CA26 /* FoodDataModel.xcdatamodeld */,
 				31B370802A71A9160045D77D /* MealDataModel.swift */,
+				31BC55942A72F2D700D02DA9 /* UserDataModel.swift */,
+				31BC55962A740BA200D02DA9 /* UserDataManager.swift */,
+				31BC55982A744D0E00D02DA9 /* MealsDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -159,6 +169,7 @@
 				31B370822A71C6940045D77D /* GradientView.swift */,
 				31B370842A7225AE0045D77D /* GreenButton.swift */,
 				31B370862A7231810045D77D /* WhiteButton.swift */,
+				31BC559A2A7462B200D02DA9 /* BlueButton.swift */,
 			);
 			path = "Custom views";
 			sourceTree = "<group>";
@@ -193,6 +204,7 @@
 				319BBF292A3B8B5B003A1C26 /* LaunchScreen.storyboard */,
 				319BBF2C2A3B8B5B003A1C26 /* Info.plist */,
 				3131F54E2A3B9854006924CA /* GoogleService-Info.plist */,
+				31BC55922A72F09800D02DA9 /* Constants.swift */,
 			);
 			path = MyFoodApp;
 			sourceTree = "<group>";
@@ -284,10 +296,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31BC559B2A7462B200D02DA9 /* BlueButton.swift in Sources */,
 				319BBF232A3B8B5A003A1C26 /* MainViewController.swift in Sources */,
 				319EA69D2A69BED5000B99C6 /* SideMenuCell.swift in Sources */,
 				319BBF1F2A3B8B5A003A1C26 /* AppDelegate.swift in Sources */,
-				31AB59582A6AD58E00DABF97 /* DataModel.xcdatamodeld in Sources */,
 				319BBF212A3B8B5A003A1C26 /* SceneDelegate.swift in Sources */,
 				319EA6AB2A6A5D32000B99C6 /* ComplementCell.swift in Sources */,
 				313893692A44F94C00AE0A16 /* SideMenuViewController.swift in Sources */,
@@ -295,7 +307,9 @@
 				319EA6A42A69EAFF000B99C6 /* UserProfileViewController.swift in Sources */,
 				3131F5592A3BA1EA006924CA /* LoginViewController.swift in Sources */,
 				31AB595A2A6ADCEA00DABF97 /* MealViewController.swift in Sources */,
+				31BC55932A72F09800D02DA9 /* Constants.swift in Sources */,
 				31B370832A71C6940045D77D /* GradientView.swift in Sources */,
+				31BC55972A740BA200D02DA9 /* UserDataManager.swift in Sources */,
 				3131F5572A3BA1B1006924CA /* RegisterViewController.swift in Sources */,
 				31E1448A2A6EDB2500CC46A2 /* SaveButton.swift in Sources */,
 				319EA6A02A69BF51000B99C6 /* SuperViewController.swift in Sources */,
@@ -304,8 +318,10 @@
 				31304ED72A40DC9E004700CD /* NutritionModel.swift in Sources */,
 				31B370852A7225AE0045D77D /* GreenButton.swift in Sources */,
 				31304ED32A40B7DD004700CD /* NutritionDataManager.swift in Sources */,
+				31BC55952A72F2D700D02DA9 /* UserDataModel.swift in Sources */,
 				319EA6A72A6A5256000B99C6 /* MealCell.swift in Sources */,
 				319EA6A22A69D898000B99C6 /* TodayMealsViewController.swift in Sources */,
+				31BC55992A744D0E00D02DA9 /* MealsDataManager.swift in Sources */,
 				31304ED52A40BC3F004700CD /* NutritionData.swift in Sources */,
 				31390DED2A70D06900F3CA26 /* FoodDataModel.xcdatamodeld in Sources */,
 				313893672A44CE9900AE0A16 /* HomeViewController.swift in Sources */,
@@ -577,16 +593,6 @@
 			);
 			currentVersion = 31390DEC2A70D06900F3CA26 /* FoodDataModel.xcdatamodel */;
 			path = FoodDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		31AB59562A6AD58E00DABF97 /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				31AB59572A6AD58E00DABF97 /* DataModel.xcdatamodel */,
-			);
-			currentVersion = 31AB59572A6AD58E00DABF97 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

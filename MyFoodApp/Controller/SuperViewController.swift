@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 
 class SuperViewController: UIViewController {
-
+    
     private var sideMenuViewController: SideMenuViewController!
     private var sideMenuRevealWidth: CGFloat = 260 // The Side Menu view size
     private let paddingForRotation: CGFloat = 150 // This variable is used to not show the side menu during screen rotation
@@ -27,7 +27,7 @@ class SuperViewController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
+//        self.view.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
         
         // Shadow Background View
         self.sideMenuShadowView = UIView(frame: self.view.bounds)
@@ -118,12 +118,15 @@ extension SuperViewController: SideMenuViewControllerDelegate {
     
     func logout(){
         let firebaseAuth = Auth.auth()
-    do {
-      try firebaseAuth.signOut()
-        navigationController?.popToRootViewController(animated: true)
-    } catch let signOutError as NSError {
-      print("Error signing out: %@", signOutError)
-    }
+        do {
+            try firebaseAuth.signOut()
+
+            navigationController?.popViewController(animated: true)
+            dismiss(animated: false, completion: nil)
+
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
     }
     
     func showViewController<T: UIViewController>(viewController: T.Type, storyboardId: String) -> () {
@@ -340,5 +343,5 @@ extension SuperViewController: UIGestureRecognizerDelegate {
             break
         }
     }
-
+    
 }

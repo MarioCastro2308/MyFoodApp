@@ -54,8 +54,6 @@ class ComplementsViewController: UIViewController {
         txtFieldSearch.endEditing(true)
     }
     
-    
-   
     @IBAction func btnAddComponentAction(_ sender: UIButton) {
         let newComplement = Complement(context: context)
         
@@ -76,22 +74,28 @@ class ComplementsViewController: UIViewController {
         resultView.isHidden = true
         btnAddComplement.isHidden = true
         
-//        selectedComplementData = nil
-
-//        saveComplement()
+        showMessageAlert(title: "Success!", message: "Complement added successfuly!")
+        
     }
     
+    func showMessageAlert(title : String, message : String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Ok", style: .default)
+        
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
     
     @IBAction func btnSaveComponentsAction(_ sender: UIButton) {
         
         if(delegate != nil && selectedComplementData != nil){
             delegate?.sendDataToMealViewController(complementsList: selectedComplements)
             self.navigationController?.popViewController(animated: true)
-
+        } else {
+            showMessageAlert(title: "Error", message: "you haven't added any complement yet")
         }
     }
-    
-    
 }
 
 
