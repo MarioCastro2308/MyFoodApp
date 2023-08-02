@@ -19,7 +19,7 @@ class MealsDataManager{
     let db = Firestore.firestore()
     
     // Get the full list of meals for the current user in the selected day
-    func loadMeals(for selectedDay : String, completionHandler : ([Meal]) -> Void) {
+    func loadMeals(selectedDay : String, completionHandler : ([Meal]) -> Void) {
         
         if let userEmail = Auth.auth().currentUser?.email {
             

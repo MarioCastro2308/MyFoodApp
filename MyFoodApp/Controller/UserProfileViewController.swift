@@ -21,15 +21,22 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var txtFieldGender: UITextField!
     @IBOutlet weak var txtFieldAge: UITextField!
     
+    @IBOutlet weak var btnSideMenu: UIBarButtonItem!
+    
+    
     let pickerView = UIPickerView()
     let genderArray = ["Male", "Female"]
     var userData : UserDataModel?
     let userDataManager = UserDataManager()
     var imagePath : String?
     var selectedImage : UIImage?
+    var isProfileImgUpdated : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        btnSideMenu.target = revealViewController()
+        btnSideMenu.action = #selector(revealViewController()?.revealSideMenu)
         
         // Profile ImageView
         profileImageView.layer.cornerRadius = profileImageView.frame.size.height / 2
@@ -47,7 +54,6 @@ class UserProfileViewController: UIViewController {
         getUserData()
         
     }
-    
     
     func tapgesture(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped))
@@ -77,7 +83,7 @@ class UserProfileViewController: UIViewController {
         
         if(validateFormData()){
 
-            if(imagePath != nil){
+            if(imagePath != nil && isProfileImgUpdated){
                 userDataManager.deleteOlderProfilePicture(for: imagePath!) { error in
                     if let e  = error {
                         print("Error deleting old profile image: \(e)")
@@ -88,6 +94,9 @@ class UserProfileViewController: UIViewController {
                         }
                     }
                 }
+            } else if(imagePath != nil && isProfileImgUpdated == false) {
+                userData?.imagePath = imagePath
+                saveUserData()
             } else {
                 userDataManager.saveProfilePicture(image: profileImageView.image!) { newImagePath in
                     self.userData?.imagePath = newImagePath
@@ -148,6 +157,7 @@ class UserProfileViewController: UIViewController {
     func updateFormData() {
         
         userDataManager.getUserProfilePhoto(for: userData!.imagePath!, completionHandler: { image in
+            self.selectedImage = image
             self.profileImageView.image = image
         })
         
@@ -202,6 +212,7 @@ extension UserProfileViewController : UIImagePickerControllerDelegate, UINavigat
         
         selectedImage = info[.originalImage] as? UIImage
         profileImageView.image = selectedImage
+        isProfileImgUpdated = true
         dismiss(animated: true)
     }
 }

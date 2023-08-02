@@ -39,7 +39,7 @@ class TodayMealsViewController: UIViewController {
         selectedMealTitle = nil
         
         if(selectedDay == nil) {
-            mealsDataManager.loadMeals(for: getCurrentDay()) { meals in
+            mealsDataManager.loadMeals(selectedDay: getCurrentDay()) { meals in
                 
                 if !meals.isEmpty {
                     getComplements(for: meals)
@@ -49,7 +49,7 @@ class TodayMealsViewController: UIViewController {
             }
         } else {
             self.title = selectedDay!.uppercased()
-            mealsDataManager.loadMeals(for: selectedDay!) { meals in
+            mealsDataManager.loadMeals(selectedDay: selectedDay!) { meals in
                 
                 if !meals.isEmpty {
                     getComplements(for: meals)

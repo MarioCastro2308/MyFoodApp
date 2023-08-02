@@ -25,14 +25,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var lblFats: UILabel!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-//    var mealsArray = [Meal]()
-    var currentUserData : UserDataModel?
-    
     var userDataManager = UserDataManager()
-    
-//    var userBMI : Float?
-//    var todayKcal : Float?
+    var mealDataManager = MealsDataManager()
     
     let db = Firestore.firestore()
     
@@ -55,47 +49,55 @@ class HomeViewController: UIViewController {
         macrosView.layer.borderColor = UIColor.black.cgColor
         macrosView.layer.borderWidth = 1
         
-//        checkUserRequirements()
+        getUserData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-       
+    func getUserData(){
         userDataManager.getUserData { data in
-            if let userData = data {
-                let userBMI = self.calculateBMI(with: userData)
-                let nutrients = self.getTodayNutrients(for: self.loadMeals())
-                self.showDataOnScreen(bmi: userBMI, nutrients: nutrients)
-            } else {
-                let nutrients = self.getTodayNutrients(for: self.loadMeals())
-                self.showDataOnScreen(bmi: nil, nutrients: nutrients)
+            if data != nil {
+                let userBMI = self.calculateBMI(with: data!)
+
+                self.mealDataManager.loadMeals(selectedDay: self.getCurrentDay()) { meals in
+                    if !meals.isEmpty {
+                        let nutrients  = self.getTodayNutrients(for: meals)
+                        self.updateScreenData(bmi: userBMI, nutrients: nutrients)
+                    } else {
+                        self.updateScreenData(bmi: userBMI, nutrients: nil)
+                    }
+                }
             }
         }
     }
     
-    func showDataOnScreen(bmi : Float?, nutrients : [String : Float]){
+    func updateScreenData(bmi : Float, nutrients : [String : Float]?){
         var remain : Float = 0.0
-        let kcal = nutrients["kcal"]!
-        let proteins = nutrients["proteins"]!
-        let carbs = nutrients["carbs"]!
-        let fats = nutrients["fats"]!
         
-        if bmi == nil {
-            lblCaloriesGoal.text = "Undefined"
-            lblCaloriesGoal.font = lblCaloriesGoal.font.withSize(20)
-            lblCaloriesRemaining.text = "Undefined"
-            lblCaloriesRemaining.font = lblCaloriesRemaining.font.withSize(20)
-        } else {
-            if bmi! > kcal {
-                remain = bmi! - kcal;
+        if nutrients != nil {
+            let kcal = nutrients!["kcal"]!
+            let proteins = nutrients!["proteins"]!
+            let carbs = nutrients!["carbs"]!
+            let fats = nutrients!["fats"]!
+            
+            if bmi > kcal {
+                remain = bmi - kcal;
             }
-            lblCaloriesGoal.text = String(format: "%.2f",bmi!)
-            lblCaloriesRemaining.text = String(format: "%.2f", remain)
+            
+            lblCaloriesGoal.text = String(format: "%.0f",bmi)
+            lblCaloriesGoal.font = lblCaloriesGoal.font.withSize(35)
+            
+            lblCaloriesRemaining.text = String(format: "%.0f", remain)
+            lblCaloriesRemaining.font = lblCaloriesRemaining.font.withSize(35)
+            
+            lblProteins.text = String(format: "%.0f",proteins)
+            lblCarbs.text = String(format: "%.0f", carbs)
+            lblFats.text = String(format: "%.0f",fats)
+        } else {
+            lblCaloriesGoal.text = String(format: "%.0f",bmi)
+            lblCaloriesGoal.font = lblCaloriesGoal.font.withSize(35)
+            
+            lblCaloriesRemaining.text = String(format: "%.0f", remain)
+            lblCaloriesRemaining.font = lblCaloriesRemaining.font.withSize(35)
         }
-        
-        
-        lblProteins.text = String(format: "%.1f",proteins)
-        lblCarbs.text = String(format: "%.1f", carbs)
-        lblFats.text = String(format: "%.1f",fats)
     }
     
     func calculateBMI(with userData : UserDataModel) -> Float {
@@ -126,19 +128,19 @@ class HomeViewController: UIViewController {
     }
     
     func getTodayNutrients(for todayMeals : [Meal]) -> [String : Float] {
-        var kcal : Float = 0
-        var proteins : Float = 0
-        var carbs : Float = 0
-        var fats : Float = 0
+        var dayKcal : Float = 0
+        var dayProteins : Float = 0
+        var dayCarbs : Float = 0
+        var dayFats : Float = 0
         
         for meal in todayMeals {
-            kcal = kcal + meal.kcal
-            proteins = proteins + meal.proteins
-            carbs = carbs + meal.carbs
-            fats = fats + meal.fats
+            dayKcal = dayKcal + meal.kcal
+            dayProteins = dayProteins + meal.proteins
+            dayCarbs = dayCarbs + meal.carbs
+            dayFats = dayFats + meal.fats
         }
         
-        return ["kcal" : kcal, "proteins" : proteins, "carbs" : carbs, "fats" : fats]
+        return ["kcal" : dayKcal, "proteins" : dayProteins, "carbs" : dayCarbs, "fats" : dayFats]
     }
     
     func getTodayKcalories(for todayMeals : [Meal]) -> Float {
@@ -149,9 +151,6 @@ class HomeViewController: UIViewController {
         
         return sum
     }
-}
-//MARK: - DataManipulation Methods
-extension HomeViewController {
     
     func getCurrentDay() -> String {
         let date = Date()
@@ -160,23 +159,5 @@ extension HomeViewController {
         let currentDay = dateFormatter.string(from: date)
         
         return  currentDay
-    }
-    
-    func loadMeals() -> [Meal] {
-        let userEmail = Auth.auth().currentUser?.email
-        var mealsArray : [Meal] = []
-        let request : NSFetchRequest<Meal> = Meal.fetchRequest()
-        let dayPredicate = NSPredicate(format: "day MATCHES %@", getCurrentDay())
-        let userPredicate = NSPredicate(format: "userEmail MATCHES %@", userEmail!)
-        
-        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [dayPredicate, userPredicate])
-        
-        do{
-            mealsArray = try context.fetch(request)
-        } catch {
-            print("Error loading meals \(error)")
-        }
-        
-        return mealsArray
     }
 }

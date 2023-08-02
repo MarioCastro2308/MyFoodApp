@@ -48,7 +48,7 @@ class WeakPlanViewController: UIViewController {
     
     // Get the current user information
     func getCurrentUserData() {
-        mealsDataManager.loadMeals(for: selectedDay) { meals in
+        mealsDataManager.loadMeals(selectedDay: selectedDay) { meals in
             if(!meals.isEmpty){
                 getComplements(for: meals)
             } else {

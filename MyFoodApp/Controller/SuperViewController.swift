@@ -27,8 +27,7 @@ class SuperViewController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-//        self.view.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
-        
+
         // Shadow Background View
         self.sideMenuShadowView = UIView(frame: self.view.bounds)
         self.sideMenuShadowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -63,7 +62,9 @@ class SuperViewController: UIViewController {
          * the value of the width of the side menu and the value of the padding for rotation
          */
         if self.revealSideMenuOnTop {
+            
             self.sideMenuTrailingConstraint = self.sideMenuViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -self.sideMenuRevealWidth - self.paddingForRotation)
+            
             self.sideMenuTrailingConstraint.isActive = true
         }
         /* We relate the value of the widthAnchor with the value of the variable sideMenuRevealWidth
@@ -97,9 +98,10 @@ extension SuperViewController: SideMenuViewControllerDelegate {
             self.showViewController(viewController: UINavigationController.self, storyboardId: "HomeNavID")
         case 1:
             // Edit Profile
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let profileModalVC = storyboard.instantiateViewController(withIdentifier: "ProfileModalID") as? UserProfileViewController
-            present(profileModalVC!, animated: true, completion: nil)
+//            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//            let profileModalVC = storyboard.instantiateViewController(withIdentifier: "ProfileModalID") as? UserProfileViewController
+//            present(profileModalVC!, animated: true, completion: nil)
+            self.showViewController(viewController: UINavigationController.self, storyboardId: "ProfileNavID")
         case 2:
             // Today Meals
             self.showViewController(viewController: UINavigationController.self, storyboardId: "TodayNavID")
@@ -196,6 +198,8 @@ extension SuperViewController: SideMenuViewControllerDelegate {
     // Call this Button Action from the View Controller you want to Expand/Collapse when you tap a button
     @IBAction open func revealSideMenu() {
         self.sideMenuState(expanded: self.isExpanded ? false : true)
+        
+        sideMenuViewController.getUserData()
     }
     
     // Keep the state of the side menu (expanded or collapse) in rotation
@@ -213,7 +217,7 @@ extension SuperViewController: SideMenuViewControllerDelegate {
 
 extension UIViewController {
     
-    // With this extension you can access the MainViewController from the child view controllers.
+    // With this extension you can access the SuperViewController from the child view controllers.
     func revealViewController() -> SuperViewController? {
         var viewController: UIViewController? = self
         
@@ -244,18 +248,16 @@ extension SuperViewController: UIGestureRecognizerDelegate {
     }
     
     // Close side menu when you tap on the shadow background view
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if (touch.view?.isDescendant(of: self.sideMenuViewController.view))! {
-            return false
-        }
-        return true
-    }
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        if (touch.view?.isDescendant(of: self.sideMenuViewController.view))! {
+//            return false
+//        }
+//        return true
+//    }
     
     // Dragging Side Menu
     @objc private func handlePanGesture(sender: UIPanGestureRecognizer) {
-        
-        // ...
-        
+       
         let position: CGFloat = sender.translation(in: self.view).x
         let velocity: CGFloat = sender.velocity(in: self.view).x
         
