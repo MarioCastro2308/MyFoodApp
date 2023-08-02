@@ -20,6 +20,7 @@ struct K {
     }
     
     struct FStore {
+        static let imagePath = "profileImagePath"
         static let colectionName = "userData"
         static let emailField = "userEmail"
         static let usernameField = "userName"

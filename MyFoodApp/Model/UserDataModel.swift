@@ -6,6 +6,7 @@
 //
 
 struct UserDataModel {
+    var imagePath : String?
     let userEmail : String
     let userName : String
     let userHeight : Float

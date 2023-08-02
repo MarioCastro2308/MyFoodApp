@@ -12,17 +12,16 @@
 		31304ED72A40DC9E004700CD /* NutritionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31304ED62A40DC9E004700CD /* NutritionModel.swift */; };
 		3131F54D2A3B8F52006924CA /* CherryBombOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3131F54C2A3B8F52006924CA /* CherryBombOne-Regular.ttf */; };
 		3131F54F2A3B9854006924CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3131F54E2A3B9854006924CA /* GoogleService-Info.plist */; };
-		3131F5522A3B9AC9006924CA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3131F5512A3B9AC9006924CA /* FirebaseAuth */; };
-		3131F5542A3B9AC9006924CA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3131F5532A3B9AC9006924CA /* FirebaseFirestore */; };
 		3131F5572A3BA1B1006924CA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131F5562A3BA1B1006924CA /* RegisterViewController.swift */; };
 		3131F5592A3BA1EA006924CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131F5582A3BA1EA006924CA /* LoginViewController.swift */; };
 		3131F55B2A3BA7CA006924CA /* DMSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3131F55A2A3BA7CA006924CA /* DMSans-Medium.ttf */; };
-		313893612A449D7100AE0A16 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 313893602A449D7100AE0A16 /* Realm */; };
-		313893632A449D7100AE0A16 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 313893622A449D7100AE0A16 /* RealmSwift */; };
 		313893672A44CE9900AE0A16 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313893662A44CE9900AE0A16 /* HomeViewController.swift */; };
 		313893692A44F94C00AE0A16 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313893682A44F94C00AE0A16 /* SideMenuViewController.swift */; };
 		31390DED2A70D06900F3CA26 /* FoodDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31390DEB2A70D06900F3CA26 /* FoodDataModel.xcdatamodeld */; };
 		31390DEF2A70E3E000F3CA26 /* WeakPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31390DEE2A70E3E000F3CA26 /* WeakPlanViewController.swift */; };
+		317BEFE62A79907800DC3352 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 317BEFE52A79907800DC3352 /* FirebaseAuth */; };
+		317BEFE82A79907800DC3352 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 317BEFE72A79907800DC3352 /* FirebaseFirestore */; };
+		317BEFEA2A79907800DC3352 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 317BEFE92A79907800DC3352 /* FirebaseStorage */; };
 		319BBF1F2A3B8B5A003A1C26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319BBF1E2A3B8B5A003A1C26 /* AppDelegate.swift */; };
 		319BBF212A3B8B5A003A1C26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319BBF202A3B8B5A003A1C26 /* SceneDelegate.swift */; };
 		319BBF232A3B8B5A003A1C26 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319BBF222A3B8B5A003A1C26 /* MainViewController.swift */; };
@@ -101,10 +100,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				313893632A449D7100AE0A16 /* RealmSwift in Frameworks */,
-				313893612A449D7100AE0A16 /* Realm in Frameworks */,
-				3131F5522A3B9AC9006924CA /* FirebaseAuth in Frameworks */,
-				3131F5542A3B9AC9006924CA /* FirebaseFirestore in Frameworks */,
+				317BEFE62A79907800DC3352 /* FirebaseAuth in Frameworks */,
+				317BEFE82A79907800DC3352 /* FirebaseFirestore in Frameworks */,
+				317BEFEA2A79907800DC3352 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,10 +221,9 @@
 			);
 			name = MyFoodApp;
 			packageProductDependencies = (
-				3131F5512A3B9AC9006924CA /* FirebaseAuth */,
-				3131F5532A3B9AC9006924CA /* FirebaseFirestore */,
-				313893602A449D7100AE0A16 /* Realm */,
-				313893622A449D7100AE0A16 /* RealmSwift */,
+				317BEFE52A79907800DC3352 /* FirebaseAuth */,
+				317BEFE72A79907800DC3352 /* FirebaseFirestore */,
+				317BEFE92A79907800DC3352 /* FirebaseStorage */,
 			);
 			productName = MyFoodApp;
 			productReference = 319BBF1B2A3B8B5A003A1C26 /* MyFoodApp.app */;
@@ -257,8 +254,7 @@
 			);
 			mainGroup = 319BBF122A3B8B5A003A1C26;
 			packageReferences = (
-				3131F5502A3B9AC9006924CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				3138935F2A449D7100AE0A16 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				317BEFE42A79907800DC3352 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 319BBF1C2A3B8B5A003A1C26 /* Products */;
 			projectDirPath = "";
@@ -540,7 +536,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3131F5502A3B9AC9006924CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		317BEFE42A79907800DC3352 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -548,36 +544,23 @@
 				minimumVersion = 10.0.0;
 			};
 		};
-		3138935F2A449D7100AE0A16 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.40.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3131F5512A3B9AC9006924CA /* FirebaseAuth */ = {
+		317BEFE52A79907800DC3352 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3131F5502A3B9AC9006924CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 317BEFE42A79907800DC3352 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		3131F5532A3B9AC9006924CA /* FirebaseFirestore */ = {
+		317BEFE72A79907800DC3352 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3131F5502A3B9AC9006924CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 317BEFE42A79907800DC3352 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		313893602A449D7100AE0A16 /* Realm */ = {
+		317BEFE92A79907800DC3352 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3138935F2A449D7100AE0A16 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		313893622A449D7100AE0A16 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3138935F2A449D7100AE0A16 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
+			package = 317BEFE42A79907800DC3352 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 
